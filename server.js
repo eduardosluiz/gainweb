@@ -38,7 +38,7 @@ app.get('/api/v1/alunos/:id', function(req, res, next) {
   var id = req.params.id;
   knex.select("*").from('aluno').where({id: id})
   .then(function(aluno) {
-    res.json(aluno);
+    res.json(aluno); 
     })
   .catch(function(error){
 console.log(error);
