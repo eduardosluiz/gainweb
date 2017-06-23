@@ -3,6 +3,7 @@ exports.up = (knex, Promise) => {
     table.increments('id').primary();
     table.integer('id_treino').references('treino.id');
     table.string('nome_exercicio').notNullable();
+    table.integer('repeticoes').notNullable();
 
   });
 };

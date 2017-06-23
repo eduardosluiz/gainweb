@@ -139,14 +139,14 @@ app.get('/api/v1/treinos', function(req, res) {
     });
 });
 app.get('/api/v1/exercicios', function(req,res){
-knex.raw('SELECT * FROM exercicios WHERE id_aluno = ? AND id_treino = ?', [req.params.id_aluno, req.params.id_treino])
-.then(function() {
-  console.log(exercicios);
-  res.json(exercicios);
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
+  knex.select("*").from("exercicio")
+    .then(function() {
+      console.log(exercicios);
+      res.json(exercicios);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
 })
 
 // app.get('/api/v1/exercicios', function(req, res) {

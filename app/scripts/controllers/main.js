@@ -13,14 +13,22 @@ angular.module('gainApp')
     $scope.alunos = [];
     $scope.treinos = [];
     $scope.exercicios = [];
+    $scope.aluno_treino = [];
 
-$scope.init = function() {
+
+    var exercicio1 = {id: "1", nome: "Supindo Jigpluff", repeticoes: "4"}
+    var exercicio2 = {id: "2", nome: "Supindo Snorlax", repeticoes: "10"}
+
+    $scope.init = function() {
       $scope.exibido = true;
-      Alunos.all(function(error, alunos) {
+        $scope.exercicios.push(exercicio1);
+        $scope.exercicios.push(exercicio2);
+        Alunos.all(function(error, alunos) {
         if(error) return console.warn(error);
         // $scope.alunoSelecionado = alunos[0];
         $scope.alunos = alunos;
         console.log(alunos);
+
         Treinos.all(function(error, treinos) {
           if(error) return console.warn(error);
           // $scope.alunoSelecionado = alunos[0];
