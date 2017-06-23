@@ -29,7 +29,7 @@
       <select
       class="form-control"
       ng-model="treinoSelecionado"
-      ng-change="carregarTreino(treinoSelecionado)"
+      ng-change="carregarTreino(alunoSelecionado, treinoSelecionado)"
       ng-options="treino.nome_treino for treino in treinos">
       <option value="">Selecione:</option>
     </select>
@@ -66,7 +66,7 @@
       </tr> -->
       <tr ng-repeat="exercicios in treinos">
         <td>{{exercicios.id}}</td>
-        <td>{{exercicios.nome}}</td>
+        <td>{{exercicios.nome_exercicio}}</td>
         <td>{{exercicios.repeticoes}}</td>
       </tr>
     </tbody>

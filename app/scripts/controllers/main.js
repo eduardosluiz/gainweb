@@ -35,7 +35,7 @@ $scope.init = function() {
       console.log($scope.alunoSelecionado);
 
     };
-    $scope.carregarTreino = function(treinoSelecionado){
+    $scope.carregarTreino = function(alunoSelecionado, treinoSelecionado){
        console.log($scope.treinoSelecionado);
 
    };
