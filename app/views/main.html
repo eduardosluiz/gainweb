@@ -1,23 +1,76 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+   <h1>GAINWEB</h1>
 </div>
+<div class=" col-xs-12 col-lg-12" ng-if="exibido">
+  <!-- ng-hide
+  ng-switch="aluno"
+  ng-switch-when="Eduardo"
+  ng-switch-when="Renan"
+  ng-swtich-default -->
+  </div>
+  <!-- <form novalidate> -->
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+    <div class="col-xs-12 col-lg-12">
+      <div class="form-group">
+        <label class="form-control-label">Aluno</label>
+        <select
+        class="form-control"
+        ng-model="alunoSelecionado"
+        ng-change="carregarAluno(alunoSelecionado, treinoSelecionado)"
+        ng-options="aluno.nome for aluno in alunos">
+        <option value="">Selecione:</option>
+      </select>
+    </div>
+  </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+  <div class="col-xs-12 col-lg-12">
+    <div class="form-group">
+      <label class="form-control-label">Treino</label>
+      <select
+      class="form-control"
+      ng-model="treinoSelecionado"
+      ng-change="carregarTreino(treinoSelecionado)"
+      ng-options="treino.nome_treino for treino in treinos">
+      <option value="">Selecione:</option>
+    </select>
+  </div>
+  <div>
+    <button class="btn btn-warning" ng-click="limpar()">Limpar!</button>
+  </div>
+      <!-- <input type="text" class="form-control" ng-model="dadoInserido"> -->
+    </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+
+  <hr>
+  <!-- <pre>
+    {{dadoInserido}}
+  </pre>
+  <hr>
+  <pre>
+    {{alunos | json}}
+  </pre> -->
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Exercicio</td>
+        <td>Repetições</td>
+        <td>Peso</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr ng-repeat="aluno in alunos">
+        <td>{{aluno.id}}</td>
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.telefone}}</td>
+      </tr> -->
+      <tr ng-repeat="exercicios in treinos">
+        <td>{{exercicios.id}}</td>
+        <td>{{exercicios.nome}}</td>
+        <td>{{exercicios.repeticoes}}</td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<!-- </div> -->
