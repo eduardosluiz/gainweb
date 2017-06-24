@@ -9,7 +9,7 @@ module.exports = {
       port: 5432,
       user : 'postgres',
       database : 'Gainweb',
-      password : '248622'
+      password : '123'
     },
     migrations: {
       tableName: 'knex_migrations'

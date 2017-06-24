@@ -151,7 +151,7 @@ app.get('/api/v1/treinos', function(req, res) {
  });
 
  app.get('/api/v1/treinos/:id_treino/exercicios', function(req, res) {
-   knex.raw('SELECT * FROM treino_exercicio te JOIN treino t ON te.id_treino = t.id JOIN exercicio e ON te.id_treino = e.id WHERE te.id_treino = ?', req.params.id_treino)
+   knex.raw('SELECT * FROM treino_exercicio te JOIN treino t ON te.id_treino = t.id JOIN exercicio e ON te.id_exercicio = e.id WHERE te.id_treino =  ?', req.params.id_treino)
    .then(function(exercicios) {
      res.json(exercicios.rows);
    })
