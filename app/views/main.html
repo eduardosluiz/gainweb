@@ -1,5 +1,5 @@
 <div class="jumbotron">
-   <h1>GAINWEB</h1>
+  <h1>GAINWEB</h1>
 </div>
 <div class=" col-xs-12 col-lg-12" ng-if="exibido">
   <!-- ng-hide
@@ -7,49 +7,42 @@
   ng-switch-when="Eduardo"
   ng-switch-when="Renan"
   ng-swtich-default -->
-  </div>
-  <!-- <form novalidate> -->
+</div>
 
-    <div class="col-xs-12 col-lg-12">
-      <div class="form-group">
-        <label class="form-control-label">Aluno</label>
-        <select
-        class="form-control"
-        ng-model="alunoSelecionado"
-        ng-change="carregarAluno(alunoSelecionado, treinoSelecionado)"
-        ng-options="aluno.nome for aluno in alunos">
-        <option value="">Selecione:</option>
+<!-- <input type="text" class="form-data" ng-model="procuraTexto">
+<table class="table table-striped">
+  <tr><th>Nome</th><th>Telefone</th></tr>
+  <tr ng-repeat="aluno in alunos | filter:procuraTexto">
+    <td>{{aluno.nome}}</td>
+    <td>{{aluno.telefone}}</td>
+  </tr>
+</table> -->
+<form novalidate>
+  <div class="col-xs-12 col-lg-12">
+    <div class="form-group">
+      <label class="form-control-label">Aluno</label>
+      <select class="form-control" ng-model="alunoSelecionado" ng-change="carregarTreinos()" ng-options="aluno.nome for aluno in alunos">
+        <option value="">Selecione</option>
       </select>
     </div>
   </div>
-
   <div class="col-xs-12 col-lg-12">
     <div class="form-group">
       <label class="form-control-label">Treino</label>
-      <select
-      class="form-control"
-      ng-model="treinoSelecionado"
-      ng-change="carregarTreino(alunoSelecionado, treinoSelecionado)"
-      ng-options="treino.nome_treino for treino in treinos">
-      <option value="">Selecione:</option>
+      <select class="form-control" ng-model="treinoSelecionado" ng-change="carregarExercicios()" ng-options="treino.nome_treino for treino in treinos">
+      <option value="">Selecione</option>
     </select>
-  </div>
-  <div>
-    <button class="btn btn-warning" ng-click="limpar()">Limpar!</button>
-  </div>
-      <!-- <input type="text" class="form-control" ng-model="dadoInserido"> -->
     </div>
+    <div>
+      <!-- <button class="btn btn-warning" ng-click="limpar()">Limpar!</button> -->
+    </div>
+  </div>
+</form>
 
 
-  <hr>
-  <!-- <pre>
-    {{dadoInserido}}
-  </pre>
-  <hr>
-  <pre>
-    {{alunos | json}}
-  </pre> -->
-  <table class="table table-responsive">
+<hr>
+<div class="col-xs-12 col-lg-12">
+  <table class="table table-responsive table-striped">
     <thead>
       <tr>
         <td>ID</td>
@@ -59,18 +52,15 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <tr ng-repeat="aluno in alunos">
-        <td>{{aluno.id}}</td>
-        <td>{{aluno.nome}}</td>
-        <td>{{aluno.telefone}}</td>
-      </tr> -->
       <tr ng-repeat="exercicio in exercicios">
         <td>{{exercicio.id}}</td>
-        <td>{{exercicio.nome}}</td>
+        <td>{{exercicio.nome_exercicio}}</td>
         <td>{{exercicio.repeticoes}}</td>
+        <td>{{exercicio.peso}}</td>
       </tr>
     </tbody>
   </table>
-</form>
+</div>
+
 
 <!-- </div> -->

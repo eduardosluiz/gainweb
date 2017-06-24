@@ -138,16 +138,27 @@ app.get('/api/v1/treinos', function(req, res) {
       console.log(error);
     });
 });
-app.get('/api/v1/exercicios', function(req,res){
-  knex.select("*").from("exercicio")
-    .then(function() {
-      console.log(exercicios);
-      res.json(exercicios);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-})
+
+ app.get('/api/v1/alunos/:id_aluno/treinos', function(req, res){
+   knex.raw('SELECT * FROM aluno_treino at JOIN aluno a ON at.id_aluno = a.id JOIN treino t ON at.id_treino = t.id WHERE a.id = ?', req.params.id_aluno)
+   .then(function(treinos) {
+     res.json(treinos.rows);
+   })
+   .catch(function(error) {
+     console.log(error);
+   });
+
+ });
+
+ app.get('/api/v1/treinos/:id_treino/exercicios', function(req, res) {
+   knex.raw('SELECT * FROM treino_exercicio te JOIN treino t ON te.id_treino = t.id JOIN exercicio e ON te.id_treino = e.id WHERE te.id_treino = ?', req.params.id_treino)
+   .then(function(exercicios) {
+     res.json(exercicios.rows);
+   })
+   .catch(function(error) {
+     console.log(error);
+   });
+ });
 
 // app.get('/api/v1/exercicios', function(req, res) {
 //   knex.select("*").from("exercicio")

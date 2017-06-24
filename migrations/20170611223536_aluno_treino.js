@@ -3,7 +3,7 @@ exports.up = (knex, Promise) => {
     table.increments('id').primary();
     table.integer('id_aluno').references('aluno.id');
     table.integer('id_treino').references('treino.id');
-
+    table.integer('peso');
   });
 };
 
