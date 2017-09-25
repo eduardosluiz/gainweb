@@ -1,0 +1,96 @@
+<div class="jumbotron">
+  <h1>GAINWEB</h1>
+</div>
+<div class=" col-xs-12 col-lg-12" ng-if="exibido">
+  <!-- ng-hide
+  ng-switch="aluno"
+  ng-switch-when="Eduardo"
+  ng-swtich-default -->
+</div>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Cadastro de Treinos</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nome">Treino:</label>
+  <div class="col-md-4">
+  <input id="nome_treino" name="nome_treino" type="text" placeholder="Nome Treino" class="form-control input-md" required="">
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Exercício:</label>
+  <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span></a>
+  <div class="col-md-4">
+    <!-- <select class="form-control" ng-model="alunoSelecionado" ng-change="carregarTreinos()" ng-options="aluno.nome for aluno in alunos">
+      <option value="">Selecione</option> -->
+  <input id="exercicioTreino" name="exercicioTreino" type="text" placeholder="ex: Agachamento" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Limpar dados"></label>
+  <div class="col-md-4">
+    <button id="limpar" name="Limpar" class="btn btn-primary">Limpar Dados</button>
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Salvar Treino"></label>
+  <div class="col-md-4">
+  <button id="salvarTreino" name="salvarTreino" class="btn btn-primary">Salvar Treino</button>
+  </div>
+</div>
+</fieldset>
+</form>
+
+<!-- <form novalidate>
+  <div class="col-xs-12 col-lg-12">
+    <div class="form-group">
+      <label class="form-control-label">Aluno</label>
+      <select class="form-control" ng-model="alunoSelecionado" ng-change="carregarTreinos()" ng-options="aluno.nome for aluno in alunos">
+        <option value="">Selecione</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-xs-12 col-lg-12">
+    <div class="form-group">
+      <label class="form-control-label">Treino</label>
+      <select class="form-control" ng-model="treinoSelecionado" ng-change="carregarExercicios()" ng-options="treino.nome_treino for treino in treinos">
+      <option value="">Selecione</option>
+    </select>
+    </div>
+    <div> -->
+      <!-- <button class="btn btn-warning" ng-click="limpar()">Limpar!</button> -->
+    <!-- </div>
+  </div>
+</form> -->
+
+
+<!-- <hr>
+<div class="col-xs-12 col-lg-12">
+  <table class="table table-responsive table-striped">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Exercicio</td>
+        <td>Repetições</td>
+        <td>Peso</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="exercicio in exercicios">
+        <td>{{exercicio.id}}</td>
+        <td>{{exercicio.nome_exercicio}}</td>
+        <td>{{exercicio.repeticoes}}</td>
+        <td>{{exercicio.peso}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- </div> -->

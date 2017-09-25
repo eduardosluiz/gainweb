@@ -8,7 +8,7 @@ module.exports = {
       host : 'localhost',
       port: 5432,
       user : 'postgres',
-      database : 'Gainweb',
+      database : 'gain',
       password : '123'
     },
     migrations: {

@@ -1,23 +1,51 @@
 <div class="jumbotron">
-  <h1>TREINOS</h1>
+  <h1>Professores</h1>
 </div>
 <div class=" col-xs-12 col-lg-12" ng-if="exibido">
   <!-- ng-hide
   ng-switch="aluno"
   ng-switch-when="Eduardo"
-  ng-switch-when="Renan"
   ng-swtich-default -->
 </div>
+<form class="form-horizontal">
+<fieldset>
 
-<!-- <input type="text" class="form-data" ng-model="procuraTexto">
-<table class="table table-striped">
-  <tr><th>Nome</th><th>Telefone</th></tr>
-  <tr ng-repeat="aluno in alunos | filter:procuraTexto">
-    <td>{{aluno.nome}}</td>
-    <td>{{aluno.telefone}}</td>
-  </tr>
-</table> -->
-<form novalidate>
+<!-- Form Name -->
+<legend>Lista de Professores</legend>
+
+<!-- <form novalidate>
+  <div class="col-xs-12 col-lg-12">
+    <div class="form-group">
+      <label class="form-control-label">Professores</label>
+      <select class="form-control" ng-model="professorSelecionado" ng-change="carregarProfessores()" ng-options="professor.nome for professor in professores">
+        <option value="">Selecione</option>
+      </select>
+    </div>
+  </div> -->
+<hr>
+<div class="col-xs-12 col-lg-12">
+  <table class="table table-responsive table-striped">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nome Professor</td>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="professor in Professores">
+        <td>{{professor.id}}</td>
+        <td>{{professor.nome}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</fieldset>
+</form>
+
+<!-- <form novalidate>
   <div class="col-xs-12 col-lg-12">
     <div class="form-group">
       <label class="form-control-label">Aluno</label>
@@ -33,14 +61,14 @@
       <option value="">Selecione</option>
     </select>
     </div>
-    <div>
+    <div> -->
       <!-- <button class="btn btn-warning" ng-click="limpar()">Limpar!</button> -->
-    </div>
+    <!-- </div>
   </div>
-</form>
+</form> -->
 
 
-<hr>
+<!-- <hr>
 <div class="col-xs-12 col-lg-12">
   <table class="table table-responsive table-striped">
     <thead>
@@ -48,7 +76,7 @@
         <td>ID</td>
         <td>Exercicio</td>
         <td>Repetições</td>
-        <!-- <td>Peso</td> -->
+        <td>Peso</td>
       </tr>
     </thead>
     <tbody>
@@ -56,11 +84,11 @@
         <td>{{exercicio.id}}</td>
         <td>{{exercicio.nome_exercicio}}</td>
         <td>{{exercicio.repeticoes}}</td>
-        <!-- <td>{{exercicio.peso}}</td> -->
+        <td>{{exercicio.peso}}</td>
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
 
 
 <!-- </div> -->

@@ -9,7 +9,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link href="https://bootswatch.com/superhero/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://bootswatch.com/superhero/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,50 +23,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-                <span class="navbar-toggler-icon"></span>
-              <!-- </button> -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">Inicio</a>
-            <!-- <li class="nav-item"> -->
-            <a class="navbar-brand" href="#">Instrutores</a>
-            <a class="navbar-brand" href="#">Alunos</a>
-            <a class="navbar-brand" href="#">Treinos</a>
-    </li>
-    <!-- <li class="nav-item"> -->
-      <a class="navbar-brand disabled" href="#">Ranking</a>
-    </li>
-  </ul>
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="text" placeholder="Procure por alguém">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-  </form>
-          </div>
-
-          <!-- <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div> -->
-        </div>
-      </div>
-    </div>
-
+    <div ng-include="'views/navbar.html'"></div>
     <div class="container">
-    <div ng-view=""></div>
+      <div ng-view=""></div>
     </div>
 
     <div class="footer">
@@ -89,6 +49,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -99,19 +60,53 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/services/main.js"></script>
-        <!-- <script src="scripts/controllers/alunos/index.js"></script> -->
-        <!-- <script src="scripts/controllers/treinos/index.js"></script> -->
-        <script src="scripts/services/alunos/index.js"></script>
-        <script src="scripts/services/treinos/index.js"></script>
-        <!-- <script src="scripts/services/exercicios/index.js"></script> -->
+        <script src="scripts/services/lodash.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
+        <!--  NAO EDITAR ACIMA -->
+        <!-- CONTROLLERS -->
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <!-- <script src="scripts/controllers/register.js"></script> -->
+        <script src="scripts/controllers/aluno/index.js"></script>
+        <script src="scripts/controllers/professor/index.js"></script>
+        <script src="scripts/controllers/edit.js"></script>
+        <!-- <script src="scripts/controllers/treinos/index.js"></script> -->
+        <script src="scripts/controllers/registro.js"></script>
+        <script src="scripts/controllers/aluno/perfilAluno.js"></script>
+        <script src="scripts/controllers/professor/perfilProfessor.js"></script>
+        <script src="scripts/controllers/ranking.js"></script>
+        <script src="scripts/controllers/professor/treinos.js"></script>
+
+
+        <!-- SERVICES -->
+        <script src="scripts/services/main.js"></script>
+        <script src="scripts/services/autenticacao.js"></script>
+        <script src="scripts/services/registro.js"></script>
+        <script src="scripts/services/alunos/index.js"></script>
+        <script src="scripts/services/professor/index.js"></script>
+        <script src="scripts/services/treinos/index.js"></script>
+        <script src="scripts/services/exercicios/index.js"></script>
+        <script src="scripts/services/alunos/perfilAluno.js"></script>
+        <script src="scripts/services/professor/perfilProfessor.js"></script>
+        <script src="scripts/services/ranking.js"></script>
+        <script src="scripts/services/professor/profTreino.js"></script>
+
+
+
+
+
+
+
+
+
+
         <!-- endbuild -->
 </body>
 </html>

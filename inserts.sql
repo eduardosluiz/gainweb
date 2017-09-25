@@ -1,5 +1,8 @@
-INSERT INTO aluno(nome, email, telefone) VALUES('Eduardo', 'eduardoluizdude@gmail.com', '51999222011');
-INSERT INTO aluno(nome, email, telefone) VALUES('Renan', 'renanpadilha94@gmail.com', '51984941322');
+INSERT INTO usuarios(username, password, tipo) VALUES('eduardo', '123', 'A');
+INSERT INTO usuarios(username, password, tipo) VALUES('renan', '123', 'A');
+
+INSERT INTO aluno(nome, email, telefone, endereco, numero, complemento, bairro, id_usuario) VALUES('Eduardo', 'eduardoluizdude@gmail.com', '51999222011', 'Rua Tomaz Flores', '522', '02', 'Bom Fim', 1);
+INSERT INTO aluno(nome, email, telefone, endereco, numero, complemento, bairro, id_usuario) VALUES('Renan', 'renanpadilha94@gmail.com', '51984941322', 'Rua Tomaz Flores', '522', '02', 'Bom Fim', 2);
 
 INSERT INTO treino(nome_treino) VALUES('Costas');
 INSERT INTO treino(nome_treino) VALUES('Braço');

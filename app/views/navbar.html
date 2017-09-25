@@ -1,0 +1,48 @@
+<div ng-controller="NavbarCtrl">
+  <div class="center">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" ng-if="logado">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse" uib-collapse="isNavCollapsed" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+        <ul class="nav navbar-nav" ng-if="user.tipo == 'P'">
+          <li>
+            <a href="#/professor/perfil"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a>
+          </li>
+          <li>
+            <a href="#/professor/treinos">Treinos</a>
+          </li>
+          <li>
+            <a href="#/professor/">Alunos</a>
+          </li>
+          <li>
+            <a href="#/ranking">Ranking</a>
+          </li>
+          <li>
+            <a ng-click="sair()"> Logout
+              <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav" ng-if="user.tipo == 'A'">
+          <li>
+            <a href="#/aluno/perfil"><span class="glyphicon glyphicon-user"></span>Meu Perfil</a>
+          </li>
+          <li>
+            <a href="#/aluno/treinos">Treinos</a>
+          </li>
+          <li>
+            <a href="#/ranking">Ranking</a>
+          </li>
+          <li>
+            <a ng-click="sair()"> Logout
+              <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
