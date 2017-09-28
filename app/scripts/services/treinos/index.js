@@ -14,4 +14,13 @@ angular.module('gainApp')
         });
       };
 
+      service.getTreinos = function(callback) {
+        $http.get(API_URL + '/treinos/')
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(error) {
+          callback(error, null);
+        });
+      };
+
   });

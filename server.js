@@ -119,10 +119,11 @@ app.post('/api/v1/register', function(req, res) {
 		password: req.body.password,
 		tipo: req.body.tipo
 	};
-  console.log(usuario);
+  console.log("Print 1 antes de cad banco"+usuario);
 	knex.insert(usuario).into('usuarios').returning('*')
 	.then(function(usuario) {
 		res.status(201).json(usuario);
+    console.log("Print 2 dep cad banco"+usuario);
 	});
 });
 
@@ -156,12 +157,25 @@ app.get('/api/v1/alunos/:id', function(req, res, next) {
       console.log(error);
     });
 });
+app.get('/api/v1/alunosUsuario/:id', function(req, res, next) {
+  var id = req.params.id;
+  knex.select("*").from('aluno').where({
+      id_usuario: id
+    })
+    .then(function(aluno) {
+      res.json(aluno);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
 app.post('/api/v1/alunos', function(req, res) {
   var aluno = {
     nome: req.body.nome,
     email: req.body.email,
     telefone: req.body.telefone,
-    objetivo: req.body.objetivo
+    objetivo: req.body.objetivo,
+    id_usuario: req.body.id_usuario
   };
   knex.insert(aluno).into('aluno').returning('*')
     .then(function(aluno) {
@@ -193,7 +207,6 @@ app.delete('/api/v1/alunos/:id', function(req, res) {
 app.get('/api/v1/professores', function(req, res) {
   knex.select("*").from("professor")
     .then(function(professores) {
-      console.log(professores);
       res.json(professores);
     })
     .catch(function(error) {
@@ -202,8 +215,22 @@ app.get('/api/v1/professores', function(req, res) {
 });
 app.get('/api/v1/professores/:id', function(req, res, next) {
   var id = req.params.id;
+  console.log(id);
   knex.select("*").from('professor').where({
       id: id
+    })
+    .then(function(professor) {
+      res.json(professor);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+app.get('/api/v1/professoresUsuario/:id', function(req, res, next) {
+  var id = req.params.id;
+  console.log(id);
+  knex.select("*").from('professor').where({
+      id_usuario: id
     })
     .then(function(professor) {
       res.json(professor);
@@ -216,7 +243,8 @@ app.post('/api/v1/professores', function(req, res) {
   var professor = {
     nome: req.body.nome,
     email: req.body.email,
-    telefone: req.body.telefone
+    telefone: req.body.telefone,
+    id_usuario: req.body.id_usuario
   };
   knex.insert(professor).into('professor').returning('*')
     .then(function(professor) {
@@ -299,6 +327,29 @@ app.put('/api/v1/alunos/:id/treinos', function(req, res) {
 		console.log(err);
 	});
 });
+
+// app.post('/api/v1/treinos', function(req, res) {
+//   var treino = {
+//     nome: req.body.nome,
+//     email: req.body.email,
+//     telefone: req.body.telefone,
+//     id_usuario: req.body.id_usuario
+//   };
+//   knex.insert(professor).into('professor').returning('*')
+//     .then(function(professor) {
+//       res.status(201).json(professor);
+//     });
+// });
+
+app.get('/api/v1/treinos', function(req, res){
+ knex.raw("SELECT * FROM treino")
+ .then(function (treinos) {
+   res.json(treinos.rows);
+ }).catch(function(err) {
+   console.log(err);
+ });
+});
+
 
 
 

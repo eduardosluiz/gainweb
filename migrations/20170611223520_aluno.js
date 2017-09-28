@@ -5,6 +5,7 @@ exports.up = (knex, Promise) => {
     table.string('email').unique().notNullable();
     table.string('telefone').notNullable();
     table.string('objetivo').notNullable();
+    table.string('pontos');
     table.integer('id_usuario').references('usuarios.id');
     table.timestamp('criado_em').notNullable().defaultTo(knex.raw('now()'));
   });

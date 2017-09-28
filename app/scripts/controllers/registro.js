@@ -22,6 +22,7 @@ angular.module('gainApp')
       }
       Register.usuario(usuario, function(error, user) {
         if(error) return console.warn(error);
+        console.log(user.id);
         var cliente = {
           nome: $scope.cliente.nome,
           telefone: $scope.cliente.nome,
@@ -29,6 +30,7 @@ angular.module('gainApp')
           objetivo: $scope.cliente.objetivo,
           id_usuario: user.id
         };
+        console.log(cliente);
         switch ($scope.usuario.tipo) {
           case 'A':
             Register.aluno(cliente, function(error, data) {

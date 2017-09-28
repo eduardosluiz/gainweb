@@ -9,11 +9,12 @@
       <div class="navbar-collapse collapse" uib-collapse="isNavCollapsed" aria-expanded="false" aria-hidden="true" style="height: 0px;">
         <ul class="nav navbar-nav" ng-if="user.tipo == 'P'">
           <li>
+            <!-- COMO FAZER DATABIND DO $SCOPE OLHAR O EXEMPLO abaixo-->
             <a href="#/professor/perfil"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#/professor/treinos">Treinos</a>
-          </li>
+          </li> -->
           <li>
             <a href="#/professor/">Alunos</a>
           </li>
@@ -21,10 +22,13 @@
             <a href="#/ranking">Ranking</a>
           </li>
           <li>
-            <a ng-click="sair()"> Logout
+            <a ng-click="sair()"> Logout - {{user.username}}
               <span class="glyphicon glyphicon-log-out"></span>
             </a>
           </li>
+
+
+
         </ul>
         <ul class="nav navbar-nav" ng-if="user.tipo == 'A'">
           <li>
@@ -37,7 +41,7 @@
             <a href="#/ranking">Ranking</a>
           </li>
           <li>
-            <a ng-click="sair()"> Logout
+            <a ng-click="sair()"> Logout  - {{user.username}}
               <span class="glyphicon glyphicon-log-out"></span>
             </a>
           </li>

@@ -14,12 +14,16 @@
 <legend>Cadastro de Treinos</legend>
 
 <!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="nome">Treino:</label>
-  <div class="col-md-4">
-  <input id="nome_treino" name="nome_treino" type="text" placeholder="Nome Treino" class="form-control input-md" required="">
+
+<div class="col-xs-12 col-lg-12">
+  <div class="form-group">
+    <label class="form-control-label">Treino</label>
+      <select class="form-control" ng-model="treinoSelecionado" ng-change="carregarExercicios()" ng-options="treino.nome_treino for treino in treinos">
+    <option value="">Selecione</option>
+  </select>
   </div>
-</div>
+  <div>
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Exercício:</label>

@@ -15,12 +15,21 @@ angular.module('gainApp')
     $scope.exercicios = [];
     $scope.aluno_treino = [];
 
+
     $scope.init = function() {
       Alunos.all(function(error, alunos) {
         if (error) return console.warn(error);
         $scope.alunos = alunos;
+
       });
     };
+
+    // $scope.init = function() {
+    // Alunos.getAluno(function(error, alunos) {
+    //   if (error) return console.warn(error);
+    //   $scope.alunos = alunos;
+    // });
+
 
     $scope.carregarTreinos = function() {
       Alunos.getTreinos($scope.alunoSelecionado.id, function(error, treinos) {
@@ -33,7 +42,7 @@ angular.module('gainApp')
       Treinos.getExercicios($scope.treinoSelecionado.id, function(error, exercicios) {
         if(error) return console.warn(error);
         $scope.exercicios = exercicios;
-      })
+      });
     };
 
     $scope.limpar = function() {
@@ -46,4 +55,4 @@ angular.module('gainApp')
     };
 
     $scope.init();
-  });
+});

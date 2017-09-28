@@ -1,7 +1,7 @@
 <div class="container">
       <div class="row">
 
-        <div class="col-xs-12 col-sm-12 col-md-26 col-lg-26 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
+        <div class="col-xs-0 col-sm-0 col-md-26 col-lg-26 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
 
 
           <div class="panel panel-info">
@@ -10,144 +10,147 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="left"> <img alt="User Pic" src="images/dude.png" class="img-circle img-responsive"> </div>
+                <div class="col-md-2 col-lg-2 " align="left"> <img alt="User Pic" src="images/dude.png" class="img-circle img-responsive"> </div>
 
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
                 <div class=" col-md-9 col-lg-9 ">
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>NOME:</td>
-                        <td>Eduardo Luiz</td>
+                        <!-- <class="form-control" ng-model="alunoSelecionado" ng-options="aluno.nome"> -->
+                        <div class="form-group">
+                          <label class="form-label-control">Nome Completo: {{professor.nome}}</label>
+                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                        </div>
                       </tr>
                       <tr>
-                        <td>Telefone:</td>
-                        <td>9-86512623</td>
+                        <div class="form-group">
+                          <label class="form-label-control">Telefone: {{professor.telefone}}</label>
+                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                        </div>
                       </tr>
-                      <tr>
-                        <td>Área de Atuação:</td>
-                        <td>Musculação</td>
-                      </tr>
-
+                      <!-- <tr>
+                        <div class="form-group">
+                          <label class="form-label-control">area: {{professor.objetivo}}</label> -->
+                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                        <!-- </div>
+                      </tr> -->
                          <tr>
 
                       <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:eduardoluiz@produce.net.br">eduardolui@produce.net.br</a></td>
+                        <div class="form-group">
+                          <label class="form-label-control">Email: {{professor.email}}</label>
+                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                        </div>
                       </tr>
-                        <!-- <td>NUMERO TELEFONICO:</td>
-                        <td>123-4567-890(Landline)
-                        </td> -->
-
                       </tr>
-
                     </tbody>
                   </table>
-
                 </div>
               </div>
             </div>
-            <div class="panel-heading">
-              <h3 class="panel-title">SEUS TREINOS:</h3>
             </div>
-            <div class="panel-body">
-              <div class="row">
 
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 ">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>TREINO A:</td>
-                        <td>Costas</td>
-                      </tr>
-                      <tr>
-                        <td>TREINO B:</td>
-                        <td>Perna</td>
-                      </tr>
-                      <!-- <tr>
-                        <td>Certificado de residencia:</td>
-                        <td>01/24/1988</td>
-                      </tr>
 
-                      <tr>
-                        <td>Recibo Publico:</td>
-                        <td>Male</td>
-                      </tr> -->
-
-                    </tbody>
-                  </table>
-
-                  <a href="#" class="btn btn-primary">Editar</a>
+            <!-- BOTÕES ESTILO DASHBOARD -->
+                        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+                        <div class="container">
+                 <div class="col-md-3">
+                    <a class="btn btn-block btn-lg btn-success" ng-click="Editar()" data-toggle="modal" data-target="#mymodal">
+                        <i class="fa fa-users" id="icone_grande"></i> <br><br>
+                        <span class="texto_grande"></i>Editar Treinos</span></a>
                   </div>
-              </div>
-            </div>
-             <div class="panel-heading">
-              <h3 class="panel-title">SUAS DIETAS ANEXADAS:</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
 
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 ">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>DIETA 1:</td>
-                        <td>Ganho de massa magra</td>
-                      </tr>
-                      <tr>
-                        <td>DIETA 2:</td>
-                        <td>Perca de peso/projeto verão</td>
-                      </tr>
-                      <!-- <tr>
-                        <td>Confirmar Nueva Contraseña:</td>
-                        <td>01/24/1988</td>
-                      </tr> -->
-
-                    </tbody>
-                  </table>
-
-                  <a href="#" class="btn btn-primary">Anexar Dieta</a>
+                  <div class="col-md-3">
+                     <a class="btn btn-block btn-lg btn-success" ng-click="TreinoP()" data-toggle="modal" data-target="#mymodal">
+                         <i class="fa fa-users" id="icone_grande"></i> <br><br>
+                         <span class="texto_grande"></i>Treino Pronto</span></a>
+                   </div>
+                   <div class="col-md-3">
+                      <a class="btn btn-block btn-lg btn-success" ng-click="newTreino()" data-toggle="modal" data-target="#mymodal">
+                          <i class="fa fa-users" id="icone_grande"></i> <br><br>
+                          <span class="texto_grande"></i>Novo Treino</span></a>
+                    </div>
+                  <!-- <div class="col-md-3">
+                    <a class="btn btn-block btn-lg btn-danger" href="#/aluno/dietas" data-toggle="modal" data-target="#mymodal">
+                        <i class="fa fa-user" id="icone_grande"></i> <br><br>
+                        <span class="texto_grande"></i> Minhas Dietas</span></a>
+                  </div> -->
+                  <div class="col-md-3">
+                    <a class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#mymodal">
+                        <i class="fa fa-cog fa-spin" id="icone_grande"></i> <br><br>
+                        <span class="texto_grande"><i class="fa fa-edit"></i> Editar Perfil</span></a>
                   </div>
-              </div>
-            </div>
+                  <!-- <div class="col-md-3">
+                    <a class="btn btn-block btn-lg btn-warning" data-toggle="modal" data-target="#mymodal">
+                        <i class="fa fa-pied-piper-alt" id="icone_grande"></i> <br><br>
+                        <span class="texto_grande"><i class="fa fa-list-ul"></i> LIST Usuários</span></a>
+                  </div> -->
+                  </div>
+                  <div ng-show="showMeNewTreino" id="newTreino" class="col-md-3">
+                    <div class="form-group">
+                      <label class="form-label-control">Nome do Treino:</label>
+                      <input type="text" name="nome" class="form-control" ng-model="Treino.nome" required/>
+                      <button class="btn btn-primary" ng-click="newExercicio()">Novo Exercicio</button>
+                    </div>
+                    <div class="form-group" ng-repeat="exercicio in exercicios">
+                      <label class="form-label-control">Nome: </label>
+                      <input type="text" name="nome" class="form-control" ng-model="exercicio.nome" required/>
+                      <label class="form-label-control">Repetições: </label>
+                      <input type="text" name="repeticoes" class="form-control" ng-model="exercicio.repeticoes" required/>
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-primary" ng-click="cadastrar()">Salvar Treino</button>
+                    </div>
+                  </div>
 
+                  <div ng-show="showMeTreinoP" id="TreinoP" class="col-md-3">
+                    <div class="col-xs-12 col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label">Treino</label>
+                          <select class="form-control" ng-model="treinoSelecionado" ng-change="carregarExercicios(treinoSelecionado)" ng-options="treino.nome_treino for treino in treinos">
+                        <option value="">Selecione</option>
+                      </select>
+                      </div>
+                      <div class="col-xs-12 col-lg-12">
+                        <table class="table table-responsive table-striped">
+                          <thead>
+                            <tr>
+                              <!-- <td>ID</td> -->
+                              <td>Exercicio</td>
+                              <td>Repetições</td>
+                              <!-- <td>Peso</td> -->
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="exercicio in exercicios">
+                              <!-- <td>{{exercicio.id}}</td> -->
+                              <td>{{exercicio.nome_exercicio}}</td>
+                              <td>{{exercicio.repeticoes}}</td>
+                              <!-- <td>{{exercicio.peso}}</td> -->
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                  </div>
+                  <div ng-show="showMeEditar" id="Editar" class="col-md-3">
+                    <!-- <div class="col-xs-12 col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label">Treino</label>
+                          <select class="form-control" ng-model="carregarTreinosCadastrados()" ng-options="treino.nome_treino for treino in treinos">
+                        <option value="">Selecione</option>
+                      </select>
+                      </div>
+                      <tbody>
+                        <tr ng-repeat="exercicio in exercicios">
 
-          </div>
-        </div>
-      </div>
-    </div>
+                          <td>{{exercicio.nome_exercicio}}</td>
+                          <td>{{exercicio.repeticoes}}</td>
+
+                        </tr>
+                      </tbody>
+                  </div> -->
+                  Editar
+                  </div>
+
+                  </div>
+                </div>

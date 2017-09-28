@@ -6,7 +6,7 @@ angular.module('gainApp')
       const API_URL = 'http://localhost:4002/api/v1';
 
       service.getPerfil = function(id_aluno, callback) {
-        $http.get(API_URL + '/perfil/perfilAluno')
+        $http.get(API_URL + '/alunosUsuario/'+id_aluno)
         .then(function(response) {
           callback(null, response.data);
         }, function(error) {

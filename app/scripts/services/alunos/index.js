@@ -15,6 +15,17 @@ angular.module('gainApp')
       });
     };
 
+
+    service.getAluno = function(id, callback) {
+          $http.get(API_URL + '/alunos/' + id)
+          .then(function(response) {
+            console.log('aluno', response.data);
+            callback(null, response.data[0]);
+          }, function(error) {
+            callback(error, null);
+          });
+        };
+
     service.getTreinos = function(id_aluno, callback) {
       $http.get(API_URL + '/alunos/' + id_aluno + '/treinos')
       .then(function(response) {

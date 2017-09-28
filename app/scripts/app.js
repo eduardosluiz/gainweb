@@ -41,14 +41,20 @@ angular
         authenticated: true
       })
       .when('/aluno/treinos', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        templateUrl: 'views/aluno/meustreinos.html',
+        controller: 'MeusTreinosCtrl',
         controllerAs: 'ctrl',
         authenticated: true
       })
       .when('/aluno/treinos/view/:id', {
-        templateUrl: 'views/treinos/view.html',
+        templateUrl: 'views/treinos/meustreinos.html',
         controller: 'treinoViewCtrl',
+        controllerAs: 'ctrl',
+        authenticated: true
+      })
+      .when('/aluno/dietas', {
+        templateUrl: 'views/aluno/dietas.html',
+        controller: 'dietasCtrl',
         controllerAs: 'ctrl',
         authenticated: true
       })

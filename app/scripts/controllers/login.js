@@ -8,15 +8,16 @@
  */
 
 angular.module('gainApp')
-  .controller('LoginCtrl', function($scope, $rootScope, $location, Authentication) {
+  .controller('LoginCtrl', function($scope, $rootScope, $location, Authentication, $window) {
     $scope.login = function() {
       Authentication.login($scope.username, $scope.password, function(error, data) {
           if (!error) {
             $rootScope.$emit('carregaNav', data);
             if(data.tipo === 'P') {
-              $location.path('/listaProf');
+              $location.path('/professor/perfil');
+              // window.localStorage = $scope.username;
             } else {
-              $location.path('/');
+              $location.path('/aluno/perfil');
             }
           } else {
             $scope.error = error;
