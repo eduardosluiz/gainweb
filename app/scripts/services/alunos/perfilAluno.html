@@ -1,92 +1,92 @@
 <div class="container">
-      <div class="row">
+  <div class="row">
 
-        <div class="col-xs-0 col-sm-0 col-md-26 col-lg-26 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
+    <div class="col-xs-0 col-sm-0 col-md-26 col-lg-26 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad">
 
 
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">INFORMAÇÕES PESSOAIS</h3>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">INFORMAÇÕES PESSOAIS</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-2 col-lg-2 " align="left"> <img alt="User Pic" src="images/dude.png" class="img-circle img-responsive"> </div>
+
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <!-- <class="form-control" ng-model="alunoSelecionado" ng-options="aluno.nome"> -->
+                    <div class="form-group">
+                      <label class="form-label-control">Nome Completo: {{aluno.nome}}</label>
+                      <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <label class="form-label-control">Telefone: {{aluno.telefone}}</label>
+                      <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                    </div>
+                  </tr>
+                  <tr>
+                    <div class="form-group">
+                      <label class="form-label-control">Objetivo: {{aluno.objetivo}}</label>
+                      <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                    </div>
+                  </tr>
+                  <tr>
+
+                    <tr>
+                      <div class="form-group">
+                        <label class="form-label-control">Email: {{aluno.email}}</label>
+                        <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
+                      </div>
+                    </tr>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-2 col-lg-2 " align="left"> <img alt="User Pic" src="images/dude.png" class="img-circle img-responsive"> </div>
-
-                <div class=" col-md-9 col-lg-9 ">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <!-- <class="form-control" ng-model="alunoSelecionado" ng-options="aluno.nome"> -->
-                        <div class="form-group">
-                          <label class="form-label-control">Nome Completo: {{aluno.nome}}</label>
-                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
-                        </div>
-                      </tr>
-                      <tr>
-                        <div class="form-group">
-                          <label class="form-label-control">Telefone: {{aluno.telefone}}</label>
-                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
-                        </div>
-                      </tr>
-                      <tr>
-                        <div class="form-group">
-                          <label class="form-label-control">Objetivo: {{aluno.objetivo}}</label>
-                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
-                        </div>
-                      </tr>
-                         <tr>
-
-                      <tr>
-                        <div class="form-group">
-                          <label class="form-label-control">Email: {{aluno.email}}</label>
-                          <!-- <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required/> -->
-                        </div>
-                      </tr>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            </div>
+          </div>
+        </div>
+      </div>
 
 
-            <!-- BOTÕES ESTILO DASHBOARD -->
-                        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-                        <div class="container">
-                 <div class="col-md-3">
-                    <a class="btn btn-block btn-lg btn-success" href="#/aluno/treinos" data-toggle="modal" data-target="#mymodal">
+      <!-- BOTÕES ESTILO DASHBOARD -->
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <div class="container">
+        <div class="col-md-3">
+          <a class="btn btn-block btn-lg btn-success" href="#/aluno/treinos" data-toggle="modal" data-target="#mymodal">
                         <i class="fa fa-users" id="icone_grande"></i> <br><br>
                         <span class="texto_grande"></i> Meus Treinos</span></a>
-                  </div>
-                  <div class="col-md-3">
-                    <a class="btn btn-block btn-lg btn-danger" data-toggle="modal" data-target="#mymodal">
+        </div>
+        <div class="col-md-3">
+          <a class="btn btn-block btn-lg btn-danger" data-toggle="modal" data-target="#mymodal">
                         <i class="fa fa-user" id="icone_grande"></i> <br><br>
                         <span class="texto_grande"></i> Minhas Dietas</span></a>
-                  </div>
-                  <div class="col-md-3">
-                    <a class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#mymodal">
+        </div>
+        <div class="col-md-3">
+          <a class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#mymodal">
                         <i class="fa fa-cog fa-spin" id="icone_grande"></i> <br><br>
                         <span class="texto_grande"><i class="fa fa-edit"></i> Editar Perfil</span></a>
-                  </div>
-                  <!-- <div class="col-md-3">
+        </div>
+        <!-- <div class="col-md-3">
                     <a class="btn btn-block btn-lg btn-warning" data-toggle="modal" data-target="#mymodal">
                         <i class="fa fa-pied-piper-alt" id="icone_grande"></i> <br><br>
                         <span class="texto_grande"><i class="fa fa-list-ul"></i> LIST Usuários</span></a>
                   </div> -->
-                  </div>
+      </div>
 
-                    </div>
-                  </div>
-                </div>
+    </div>
+  </div>
+</div>
 
-            <!-- <div class="panel-heading">
+<!-- <div class="panel-heading">
               <h3 class="panel-title">SEUS TREINOS:</h3>
             </div>
             <div class="panel-body">
               <div class="row"> -->
 
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+<!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>
                     <dt>DEPARTMENT:</dt>
                     <dd>Administrator</dd>
@@ -98,7 +98,7 @@
                     <dd>Male</dd>
                   </dl>
                 </div>-->
-                <!-- <div class=" col-md-9 col-lg-9 ">
+<!-- <div class=" col-md-9 col-lg-9 ">
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -109,7 +109,7 @@
                         <td>TREINO B:</td>
                         <td>Perna</td>
                       </tr> -->
-                      <!-- <tr>
+<!-- <tr>
                         <td>Certificado de residencia:</td>
                         <td>01/24/1988</td>
                       </tr>
@@ -119,10 +119,10 @@
                         <td>Male</td>
                       </tr> -->
 
-                    <!-- </tbody>
+<!-- </tbody>
                   </table> -->
 
-                  <!-- <a href="#" class="btn btn-primary">Editar</a>
+<!-- <a href="#" class="btn btn-primary">Editar</a>
                   </div>
               </div>
             </div>
@@ -132,7 +132,7 @@
             <div class="panel-body">
               <div class="row"> -->
 
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+<!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>
                     <dt>DEPARTMENT:</dt>
                     <dd>Administrator</dd>
@@ -144,7 +144,7 @@
                     <dd>Male</dd>
                   </dl>
                 </div>-->
-                <!-- <div class=" col-md-9 col-lg-9 ">
+<!-- <div class=" col-md-9 col-lg-9 ">
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -155,12 +155,12 @@
                         <td>DIETA 2:</td>
                         <td>Perca de peso/projeto verão</td>
                       </tr> -->
-                      <!-- <tr>
+<!-- <tr>
                         <td>Confirmar Nueva Contraseña:</td>
                         <td>01/24/1988</td>
                       </tr> -->
 
-                    <!-- </tbody>
+<!-- </tbody>
                   </table>
 
                   <a href="#" class="btn btn-primary">Anexar Dieta</a>

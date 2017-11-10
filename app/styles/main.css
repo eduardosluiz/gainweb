@@ -131,6 +131,89 @@ body {
       margin-left:2px;
   }
 
+}
+
+.square{
+    width: 48%;
+    height: 0; /* A mágica está aqui */
+    padding-bottom: 48%; /* ... e está aqui */
+    margin: 1%;
+    float: left;
+    position: relative;
+}
+
+/*
+    Veja mais sobre como centralizar o texto no box aqui:
+    http://css-tricks.com/centering-in-the-unknown/
+*/
+.block{
+  position: absolute;
+  text-align: center;
+  background: #1a1a1a;
+  width: 100%;
+  height: 100%;
+}
+
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+ }
+
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 80%;
+  background: #222;
+  color: #FFF;
+ }
 
 
+ .panel.panel-default{
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+
+.panel.panel-infopessoais{
+ position: relative;
+ width: 200px;
+ height: 200px;
+}
+
+.colorfont{
+color: #FFFFFF;
+
+}
+
+
+body {
+  background: url("../images/opção2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #737373;
+    color: white;
+
+}
+
+.panel-primary {
+    border-color: black;
+}
+
+.panel-info {
+    border-color: black;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #737373;
+    border-color: black;
 }

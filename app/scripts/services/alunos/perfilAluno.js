@@ -14,4 +14,13 @@ angular.module('gainApp')
         });
       };
 
+      service.updatePerfilA = function(aluno, callback) {
+        $http.put(API_URL + '/alunos/' + aluno.id_usuario, aluno)
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(error) {
+          callback(error, null);
+        });
+      };
+
   });

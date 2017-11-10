@@ -39,4 +39,23 @@ angular.module('gainApp')
       });
     };
 
+    service.getRanking = function(callback) {
+      $http.get(API_URL + '/ranking')
+      .then(function(response) {
+        callback(null, response.data);
+      }, function(err) {
+        callback(err, null);
+      });
+    };
+
+    service.updateRanking = function(id_aluno, aluno, callback) {
+      console.log('ALUNO', aluno)
+      $http.put(API_URL + '/alunos/' + id_aluno + '/ranking', aluno)
+      .then(function(response) {
+        callback(null, response.data);
+      }, function(err) {
+        callback(err, null);
+      });
+    };
+
   });

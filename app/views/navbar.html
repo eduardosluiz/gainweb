@@ -7,31 +7,38 @@
         </button>
       </div>
       <div class="navbar-collapse collapse" uib-collapse="isNavCollapsed" aria-expanded="false" aria-hidden="true" style="height: 0px;">
-        <ul class="nav navbar-nav" ng-if="user.tipo == 'P'">
-          <li>
-            <!-- COMO FAZER DATABIND DO $SCOPE OLHAR O EXEMPLO abaixo-->
-            <a href="#/professor/perfil"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a>
+        <ul class="nav navbar-nav navbar-right" ng-if="user.tipo == 'P'">
+          <!-- <li> -->
+            <!-- COMO FAZER DATABIND DO $SCOPE OLHAR O EXEMPLO abaixo -->
+            <!-- <a href="#/professor/perfil"><span class="glyphicon glyphicon-user"></span> Meu Perfil</a>
           </li>
-          <!-- <li>
+          <li>
             <a href="#/professor/treinos">Treinos</a>
           </li> -->
-          <li>
+          <!-- <li>
             <a href="#/professor/">Alunos</a>
           </li>
           <li>
             <a href="#/ranking">Ranking</a>
+          </li> -->
+          <!-- <li>
+            <a ng-click="sair()"> Nome: {{professor.nome}}
+            <span class="glyphicon glyphicon-user"></span>
+          </a>
           </li>
+        -->
           <li>
-            <a ng-click="sair()"> Logout - {{user.username}}
+            <button type="button" class="btn btn-primary btn-group-justified btn-lg" ng-click="sair()"> Logout - {{user.username}}
               <span class="glyphicon glyphicon-log-out"></span>
-            </a>
+            </button>
           </li>
 
 
 
         </ul>
-        <ul class="nav navbar-nav" ng-if="user.tipo == 'A'">
-          <li>
+
+        <ul class="nav navbar-nav navbar-right" ng-if="user.tipo == 'A'">
+        <!-- <li>
             <a href="#/aluno/perfil"><span class="glyphicon glyphicon-user"></span>Meu Perfil</a>
           </li>
           <li>
@@ -39,11 +46,12 @@
           </li>
           <li>
             <a href="#/ranking">Ranking</a>
-          </li>
+          </li> -->
+
           <li>
-            <a ng-click="sair()"> Logout  - {{user.username}}
+            <button type="button" class="btn btn-primary btn-group-justified btn-lg" ng-click="sair()"> Logout - {{user.username}}
               <span class="glyphicon glyphicon-log-out"></span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>

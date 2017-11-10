@@ -71,16 +71,16 @@ function auth(req, res, next) {
 
 // Autenticação
 app.get('/api/v1/alunoLogado/:id', function(req, res) {
-	knex.raw('SELECT * FROM alunos WHERE id_usuario =  ?', req.params.id)
+	knex.raw('SELECT * FROM aluno WHERE id_usuario =  ?', req.params.id)
 	.then(function (aluno) {
-		res.json(alunos.rows);
+		res.json(aluno.rows);
 	}).catch(function(err) {
 		console.log(err);
 	});
 });
 
 app.get('/api/v1/professorLogado/:id', function(req, res) {
-	knex.raw('SELECT * FROM professores WHERE id_usuario =  ?', req.params.id)
+	knex.raw('SELECT * FROM professor WHERE id_usuario =  ?', req.params.id)
 	.then(function (professor) {
 		res.json(professor.rows);
 	}).catch(function(err) {
@@ -119,11 +119,9 @@ app.post('/api/v1/register', function(req, res) {
 		password: req.body.password,
 		tipo: req.body.tipo
 	};
-  console.log("Print 1 antes de cad banco"+usuario);
 	knex.insert(usuario).into('usuarios').returning('*')
 	.then(function(usuario) {
 		res.status(201).json(usuario);
-    console.log("Print 2 dep cad banco"+usuario);
 	});
 });
 
@@ -138,7 +136,6 @@ app.get('/health', function(req, res) {
 app.get('/api/v1/alunos', function(req, res) {
   knex.select("*").from("aluno")
     .then(function(alunos) {
-      console.log(alunos);
       res.json(alunos);
     })
     .catch(function(error) {
@@ -215,7 +212,6 @@ app.get('/api/v1/professores', function(req, res) {
 });
 app.get('/api/v1/professores/:id', function(req, res, next) {
   var id = req.params.id;
-  console.log(id);
   knex.select("*").from('professor').where({
       id: id
     })
@@ -228,7 +224,6 @@ app.get('/api/v1/professores/:id', function(req, res, next) {
 });
 app.get('/api/v1/professoresUsuario/:id', function(req, res, next) {
   var id = req.params.id;
-  console.log(id);
   knex.select("*").from('professor').where({
       id_usuario: id
     })
@@ -260,6 +255,22 @@ app.put('/api/v1/professores/:id', function(req, res) {
       res.status(204).json(professor);
     });
 });
+//atualiza dados do professor
+// app.put('/api/v1/professores/:id', function(req, res){
+// var id = req.params.id;
+//   var professor = {
+//     nome: req.body.nome,
+//     email: req.body.email,
+//     telefone: req.body.telefone,
+//     id_usuario: req.body.id_usuario
+// };
+// knex.update(professor).into('professor').returning('*')
+// .then(function(professor){
+//   res.status(201).json(professor);
+// });
+// });
+
+
 app.delete('/api/v1/professores/:id', function(req, res) {
   var id = req.params.id;
   knex('professor').where({
@@ -276,7 +287,6 @@ app.delete('/api/v1/professores/:id', function(req, res) {
 app.get('/api/v1/treinos', function(req, res) {
   knex.select("*").from("treino")
     .then(function(treinos) {
-      console.log(treinos);
       res.json(treinos);
     })
     .catch(function(error) {
@@ -292,8 +302,32 @@ app.put('/api/v1/alunos/:id/treinos', function(req, res) {
 		res.status(200).json(professor);
 	});
 });
+//Perguntar pro Renan... Quero dar um update com elementos novos, ou editando os que ja existem ou excluindo.
+app.put('/api/v1/exercicios', function(req, res) {
+	var exercicios = req.body;
+  for (i = 0; i < exercicios.length; i++) {
+      knex.raw('UPDATE exercicio SET nome_exercicio = ?, repeticoes = ?, gif = ? WHERE id = ?', [exercicios[i].nome_exercicio, exercicios[i].repeticoes, exercicios[i].gif, exercicios[i].id])
+      .then(function(exercicio) {
+        res.status(200).json(exercicio);
+      });
+    }
 
+});
 
+// app.delete('/api/v1/exercicios/treinos/:id', function(req, res){
+//   console.log('ENTROU AQUI')
+//   console.log('DELETAR TREINO_EXERCICIO', req.params.id)
+//   knex('treino_exercicio').where({id: req.params.id}).del()
+// 	.then(function(exercicio) {
+// 		res.status(204).json();
+// 	});
+// 	// var exercicioId = req.params.id_exercicio;
+//   // var treinoId = req.params.id_treino;
+// 	// knex('treino_exercicio').where({id_treino: treinoId, id_exercicio: exercicioId}).del()
+// 	// .then(function(exercicio) {
+// 	// 	res.status(204).json();
+// 	// });
+// });
 
 //busca treino por idAluno
  app.get('/api/v1/alunos/:id_aluno/treinos', function(req, res){
@@ -308,7 +342,7 @@ app.put('/api/v1/alunos/:id/treinos', function(req, res) {
  });
 //busca treino por idTreino
  app.get('/api/v1/treinos/:id_treino/exercicios', function(req, res) {
-   knex.raw('SELECT * FROM treino_exercicio te JOIN treino t ON te.id_treino = t.id JOIN exercicio e ON te.id_exercicio = e.id WHERE te.id_treino =  ?', req.params.id_treino)
+   knex.raw('SELECT te.id, te.id_treino, te.id_exercicio, e.nome_exercicio, e.repeticoes, e.gif FROM treino_exercicio te JOIN treino t ON te.id_treino = t.id JOIN exercicio e ON te.id_exercicio = e.id WHERE te.id_treino =  ?', req.params.id_treino)
    .then(function(exercicios) {
      res.json(exercicios.rows);
    })
@@ -350,8 +384,113 @@ app.get('/api/v1/treinos', function(req, res){
  });
 });
 
+app.post('/api/v1/aluno/:id_aluno/treino/:id_treino', function(req, res) {
+  var aluno_treino = {
+    id_treino: req.params.id_treino,
+    id_aluno: req.params.id_aluno
+  };
+  knex.insert(aluno_treino).into('aluno_treino').returning('*')
+  .then(function(aluno_treino) {
+    res.status(201).json(aluno_treino);
+  });
+});
 
+app.get('/api/v1/alunos/:id_aluno/dietas', function(req, res) {
+  knex.select("*").from('dieta').where({id_aluno: req.params.id_aluno})
+  .then(function(dietas) {
+    res.json(dietas);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+});
 
+app.get('/api/v1/dietas/:id', function(req, res, next) {
+	var id = req.params.id;
+	knex.select("*").from('dieta').where({id: id})
+	.then(function(dieta) {
+		res.json(dieta);
+	});
+});
+
+app.post('/api/v1/alunos/:id_aluno/dietas', function(req, res) {
+  var dieta = {
+    id_aluno: req.params.id_aluno,
+    nome_dieta: req.body.nome_dieta,
+    conteudo: req.body.conteudo
+  }
+  knex.insert(dieta).into('dieta').returning("*")
+  then(function(dieta) {
+    res.status(201).json(dieta)
+  })
+  .catch(function(error) {
+    console.log(error)
+  });
+});
+
+app.put('/api/v1/dietas/:id', function(req, res) {
+  var id = req.params.id;
+	knex('dieta').where({id: id}).update(req.body).then(function(dieta) {
+		res.status(204).json(dieta);
+	});
+});
+
+app.delete('/api/v1/dietas/:id', function(req, res){
+	var id = req.params.id;
+	knex('dieta').where({id: id}).del()
+	.then(function(dieta) {
+		res.status(204).json();
+	});
+});
+
+app.get('/api/v1/ranking', function(req, res) {
+  knex.raw("SELECT id, objetivo, pontos, nome FROM aluno")
+  .then(function(ranking) {
+    res.json(ranking.rows);
+  });
+});
+
+app.put('/api/v1/alunos/:id/ranking', function(req, res) {
+  var id = req.params.id;
+	knex('aluno').where({id: id}).update(req.body)
+  .then(function(ranking) {
+		res.status(204).json(ranking);
+	});
+});
+
+app.delete('/api/v1/treinos/exercicios/:id', function(req, res){
+	var id = req.params.id;
+	knex('treino_exercicio').where({id: id}).del()
+  .then(function(treino_exercicio) {
+		res.status(204).json();
+	});
+});
+
+app.post('/api/v1/treinos', function(req, res) {
+  knex.insert(req.body).into('treino').returning('*')
+  .then(function(treino) {
+    res.status(201).json(treino)
+  });
+});
+
+app.post('/api/v1/exercicios', function(req, res) {
+  knex.insert(req.body).into('exercicio').returning('*')
+  .then(function(treino) {
+    res.status(201).json(treino)
+  });
+});
+
+app.post('/api/v1/treinos/:id_treino/exercicios/:id_exercicio', function(req, res) {
+  var treino_exercicio = {
+    id_treino: req.params.id_treino,
+    id_exercicio: req.params.id_exercicio
+  };
+
+  knex.insert(treino_exercicio).into('treino_exercicio').returning('*')
+  .then(function(treino) {
+    res.status(201).json(treino)
+  });
+});
 
 // app.get('/api/v1/exercicios', function(req, res) {
 //   knex.select("*").from("exercicio")

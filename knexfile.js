@@ -1,7 +1,7 @@
 module.exports = {
   development: {
     client: 'pg',
-    debug: true,
+    debug: false,
     connection: {
       // debug: true,
       pool: {max: 1, min: 1},

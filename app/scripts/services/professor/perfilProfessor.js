@@ -14,4 +14,15 @@ angular.module('gainApp')
         });
       };
 
+      service.updatePerfil = function(professor, callback) {
+        $http.put(API_URL + '/professores/'+professor.id, professor)
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(error) {
+          callback(error, null);
+        });
+      };
+
+
+
   });

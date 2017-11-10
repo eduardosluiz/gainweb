@@ -2,47 +2,46 @@
 
 /**
  * @ngdoc function
- * @name gainApp.controller:rankingCtrl
+ * @name gainApp.controller:perfilAlunoCtrl
  * @description
  * # MainCtrl
  * Controller of the gainApp
  */
 angular.module('gainApp')
-  .controller('rankingCtrl', function($scope, $http, Alunos, Treinos, $window) {
-
-    $scope.alunos = [];
-    // $scope.treinos = [];
-    $scope.exercicios = [];
-    $scope.aluno_treino = [];
+  .controller('RankingCtrl', function($scope, Alunos, $window, Authentication, Ranking, $location) {
 
     $scope.init = function() {
-      Alunos.all(function(error, alunos) {
-        if (error) return console.warn(error);
-        $scope.alunos = alunos;
+      Authentication.getLoggedInUser(function(user) {
+        $scope.user = user;
+        console.log($scope.user)
+        Ranking.getRanking(function(err, ranking) {
+          $scope.ranking = ranking;
+        });
       });
     };
 
-    $scope.carregarTreinos = function() {
-      Alunos.getTreinos($scope.alunoSelecionado.id, function(error, treinos) {
-        if(error) return console.warn(error);
-        $scope.treinos = treinos;
+    $scope.adicionarPontos = function(aluno) {
+      aluno.pontos += 5;
+      Ranking.updateRanking(aluno.id, aluno, function(err, rank) {
+        if(err) return console.warn(err);
+        $window.alert('Ranking atualizado com sucesso');
       });
     };
 
-    $scope.carregarExercicios = function() {
-      Treinos.getExercicios($scope.treinoSelecionado.id, function(error, exercicios) {
-        if(error) return console.warn(error);
-        $scope.exercicios = exercicios;
-      })
+    $scope.removerPontos = function(aluno) {
+      aluno.pontos -= 5;
+      Ranking.updateRanking(aluno.id, aluno, function(err, rank) {
+        if(err) return console.warn(err);
+        $window.alert('Ranking atualizado com sucesso');
+      });
     };
 
-    $scope.limpar = function() {
-      if (!$window.confirm('Deseja limpar?')) {
-        return;
-      };
-      $scope.alunoSelecionado = null;
-      $scope.treinoSelecionado = null;
-      $scope.dadoInserido = null;
+    $scope.voltar = function() {
+      if($scope.user.tipo == 'A') {
+        $location.path('/aluno/perfil');
+      } else {
+        $location.path('/professor/perfil');
+      }
     };
 
     $scope.init();

@@ -58,6 +58,12 @@ angular
         controllerAs: 'ctrl',
         authenticated: true
       })
+      .when('/aluno/dietas/:id', {
+        templateUrl: 'views/aluno/editDieta.html',
+        controller: 'editDietaCtrl',
+        controllerAs: 'ctrl',
+        authenticated: true
+      })
       .when('/professor/perfil', {
         templateUrl: 'views/professor/perfilProfessor.html',
         controller: 'perfilProfessorCtrl',
@@ -90,7 +96,7 @@ angular
       })
       .when('/ranking', {
         templateUrl: 'views/ranking.html',
-        controller: 'rankingCtrl',
+        controller: 'RankingCtrl',
         controllerAs: 'ctrl',
         authenticated: true
       })

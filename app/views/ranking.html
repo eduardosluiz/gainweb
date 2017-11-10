@@ -1,70 +1,45 @@
-<div class="container">
-    <div class="row col-md-26 col-md-offset-2 custyle">
-      <th  class="text-center">RANKING GANHOS</th>
-    <table class="table table-striped custab">
-    <thead>
-
-    <a href="#"class="btn btn-primary btn-xs pull-right"><b>+</b> Adicionar aluno</a>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Pontuação</th>
-            <th class="text-center">Ação</th>
-        </tr>
-    </thead>
-            <tr>
-                <td>1</td>
-                <td>Eduardo</td>
-                <td>30</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> +10</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> -10</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Renan</td>
-                <td>20</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> +10</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> -10</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Miguel</td>
-                <td>20</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> +10</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> -10</a></td>
-            </tr>
+<button ng-click="voltar()" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</button>
+<h2>RANKING</h2>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Ranking de Perda de Peso</h3>
+    <table class="table">
+      <tr>
+        <th>Nome</th>
+        <th>Pontos</th>
+        <th ng-if="user.tipo !== 'A'">Ações</th>
+      </tr>
+      <tr ng-repeat="pp in ranking | orderBy:'-pontos'" ng-if="pp.objetivo === 'PP'">
+        <td>{{pp.nome}}</td>
+        <td>{{pp.pontos}}</td>
+        <td ng-if="user.tipo !== 'A'">
+          <div class="btn-group pull-right nowrap">
+            <a class="btn btn-primary btn-xs" ng-click="adicionarPontos(pp)"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="btn btn-danger btn-xs" ng-click="removerPontos(pp)"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
+        </td>
+      </tr>
     </table>
-    </div>
-</div>
-<div class="container">
-    <div class="row col-md-26 col-md-offset-2 custyle">
-      <th  class="text-center">RANKING PERDAS</th>
-    <table class="table table-striped custab">
-    <thead>
-
-    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Adicionar aluno</a>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Pontuação</th>
-            <th class="text-center">Ação</th>
-        </tr>
-    </thead>
-            <tr>
-                <td>1</td>
-                <td>Paulo</td>
-                <td>30</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> +10</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> -10</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Fernando</td>
-                <td>20</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> +10</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> -10</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Roberta</td>
-                <td>10</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> +10</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> -10</a></td>
-            </tr>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <h3>Ranking de Hipertrofia</h3>
+    <table class="table">
+      <tr>
+        <th>Nome</th>
+        <th>Pontos</th>
+        <th ng-if="user.tipo !== 'A'">Ações</th>
+      </tr>
+      <tr ng-repeat="h in ranking | orderBy:'-pontos'" ng-if="h.objetivo === 'H'">
+        <td>{{h.nome}}</td>
+        <td>{{h.pontos}}</td>
+        <td ng-if="user.tipo !== 'A'">
+          <div class="btn-group pull-right nowrap">
+            <a class="btn btn-primary btn-xs" ng-click="adicionarPontos(h)"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="btn btn-danger btn-xs" ng-click="removerPontos(h)"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
+        </td>
+      </tr>
     </table>
-    </div>
+  </div>
+
 </div>

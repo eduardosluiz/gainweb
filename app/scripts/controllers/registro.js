@@ -13,13 +13,15 @@ angular.module('gainApp')
       $scope.cliente = {};
       $scope.usuario = {};
     };
-
+//cadastro de usuario e senha
     $scope.cadastrar = function() {
       var usuario = {
         username: $scope.usuario.username,
         password: $scope.usuario.password,
         tipo: $scope.usuario.tipo
       }
+
+      //cadastro das informações do usuário conforme tipo
       Register.usuario(usuario, function(error, user) {
         if(error) return console.warn(error);
         console.log(user.id);
