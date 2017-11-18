@@ -36,6 +36,8 @@
     </div>
 
 
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -46,6 +48,31 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
+
+
+    <!-- <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1845913872405179',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+
+        FB.AppEvents.logPageView();
+
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script> -->
+
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -62,8 +89,12 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/ng-facebook/ngFacebook.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.6/full/ckeditor.js"></script>
+    <script src="https://s3-ap-southeast-1.amazonaws.com/naveensingh/posts_data/ckeditor_example/ng-ckeditor.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -87,6 +118,10 @@
         <script src="scripts/controllers/aluno/meustreinos.js"></script>
         <script src="scripts/controllers/aluno/dietas.js"></script>
         <script src="scripts/controllers/aluno/editDieta.js"></script>
+        <!-- <script src="scripts/controllers/submitController.js"></script> -->
+
+        <!-- DIRECTIVES -->
+        <!-- <script src="scripts/directives/fileModel.js"></script> -->
 
 
         <!-- SERVICES -->
@@ -103,6 +138,7 @@
         <script src="scripts/services/ranking.js"></script>
         <script src="scripts/services/professor/profTreino.js"></script>
         <script src="scripts/services/alunos/meustreinos.js"></script>
+        <!-- <script src="scripts/services/multipartForm.js"></script> -->
 
 
 

@@ -4,6 +4,7 @@ exports.up = (knex, Promise) => {
     table.string('username').unique().notNullable();
     table.string('password').notNullable();
     table.string('tipo').notNullable();
+    table.integer('fbid');
     table.string('token').defaultTo(knex.raw('uuid_generate_v4()'))
     table.timestamp('criado_em').notNullable().defaultTo(knex.raw('now()'));
   });

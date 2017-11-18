@@ -46,7 +46,7 @@ angular.module('gainApp')
         var treino = {
           nome_treino: nome_treino
         };
-        
+
         $http.post(API_URL + '/treinos', treino)
         .then(function(response) {
           callback(null, response.data);
@@ -73,4 +73,32 @@ angular.module('gainApp')
         });
       };
 
-  });
+      service.atualizarExercicio = function(exercicio, callback) {
+        $http.put(API_URL + '/exercicios/' + exercicio.id, exercicio)
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(err) {
+          callback(err, null);
+        });
+      };
+
+      service.criarDietaPorProfessor = function(dieta, id_aluno, callback){
+        console.log(dieta);
+        $http.post(API_URL + '/alunos/' + id_aluno + '/dietas', dieta)
+        .then(function(response) {
+          callback(null, response.data);
+          console.log(response.data);
+        }, function(error){
+          callback(error, null);
+        });
+      };
+
+  //     service.associarDietaAoAluno = function(idDieta, id_aluno, callback){
+  //       $http.post(API_URL + '/dieta/' + idDieta + '/aluno/' + id_aluno)
+  //       .then(function(response){
+  //         callback(null, response.data);
+  //       }, function(error){
+  //         callback(error, null);
+  //     });
+  // };
+});

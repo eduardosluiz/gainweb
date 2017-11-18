@@ -4,7 +4,10 @@ var app = express();
 var router = express.Router();
 var port = process.env.PORT || 4002;
 var knex = require('./db');
+var fs = require('fs');
+// var multer = require('multer');
 
+// app.use(multer({dest: './uploads/'}))
 app.use(express.static(__dirname + '/app'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use(router);
@@ -85,6 +88,23 @@ app.get('/api/v1/professorLogado/:id', function(req, res) {
 		res.json(professor.rows);
 	}).catch(function(err) {
 		console.log(err);
+	});
+});
+
+app.post('/api/v1/authFacebook', function(req, res, next) {
+  knex.select("*").from('usuarios').where({fbid: req.body.id})
+  .then(function(users) {
+    if(users.length === 0) {
+      res.sendStatus(401);
+      return;
+    }
+    req.user = users[0];
+    res.send(req.user);
+    next();
+  }).catch(function(error) {
+		console.warn(error);
+		res.sendStatus(401);
+		return;
 	});
 });
 
@@ -173,7 +193,9 @@ app.post('/api/v1/alunos', function(req, res) {
     telefone: req.body.telefone,
     objetivo: req.body.objetivo,
     id_usuario: req.body.id_usuario
+    // fbid: req.body.fbid
   };
+  console.log('aluno');
   knex.insert(aluno).into('aluno').returning('*')
     .then(function(aluno) {
       res.status(201).json(aluno);
@@ -303,16 +325,16 @@ app.put('/api/v1/alunos/:id/treinos', function(req, res) {
 	});
 });
 //Perguntar pro Renan... Quero dar um update com elementos novos, ou editando os que ja existem ou excluindo.
-app.put('/api/v1/exercicios', function(req, res) {
-	var exercicios = req.body;
-  for (i = 0; i < exercicios.length; i++) {
-      knex.raw('UPDATE exercicio SET nome_exercicio = ?, repeticoes = ?, gif = ? WHERE id = ?', [exercicios[i].nome_exercicio, exercicios[i].repeticoes, exercicios[i].gif, exercicios[i].id])
-      .then(function(exercicio) {
-        res.status(200).json(exercicio);
-      });
-    }
-
-});
+// app.put('/api/v1/exercicios', function(req, res) {
+// 	var exercicios = req.body;
+//   for (i = 0; i < exercicios.length; i++) {
+//       knex.raw('UPDATE exercicio SET nome_exercicio = ?, repeticoes = ?, gif = ? WHERE id = ?', [exercicios[i].nome_exercicio, exercicios[i].repeticoes, exercicios[i].gif, exercicios[i].id])
+//       .then(function(exercicio) {
+//         res.status(200).json(exercicio);
+//       });
+//     }
+//
+// });
 
 // app.delete('/api/v1/exercicios/treinos/:id', function(req, res){
 //   console.log('ENTROU AQUI')
@@ -417,10 +439,10 @@ app.post('/api/v1/alunos/:id_aluno/dietas', function(req, res) {
   var dieta = {
     id_aluno: req.params.id_aluno,
     nome_dieta: req.body.nome_dieta,
-    conteudo: req.body.conteudo
+    conteudo: req.body.corpoDieta
   }
   knex.insert(dieta).into('dieta').returning("*")
-  then(function(dieta) {
+  .then(function(dieta) {
     res.status(201).json(dieta)
   })
   .catch(function(error) {
@@ -488,37 +510,51 @@ app.post('/api/v1/treinos/:id_treino/exercicios/:id_exercicio', function(req, re
 
   knex.insert(treino_exercicio).into('treino_exercicio').returning('*')
   .then(function(treino) {
-    res.status(201).json(treino)
+res.status(201).json(treino)
   });
 });
 
-// app.get('/api/v1/exercicios', function(req, res) {
-//   knex.select("*").from("exercicio")
-//     .then(function(exercicios) {
-//       console.log(exercicios);
-//       res.json(exercicios);
-//     })
-//     .catch(function(error) {
-//       console.log(error);
-//     });
-// });
-// app.get('/api/v1/alunoTreino:id', function(req, res) {
-//   var id = req.params.id;
-//   knex.select("*").from('aluno_treino').where({
-//       id_aluno: id
-//     })
-//     .then(function(aluno_treino) {
-//       console.log(aluno_treino.id);
-//       knex.raw('SELECT * FROM exercicio WHERE id_treino = 2;')
-//       .then(function(exercicio){
-//         console.log("Exercicios: "+exercicio.nome_exercicio);
-//         res.json(id.rows);
-//       }).catch(function(err) {
-//         console.log(err);
-//       });
-//     })
-//     .catch(function(error) {
-//       console.log(error);
-//     });
-//   });
+app.put('/api/v1/treinos/exercicios/:id', function(req, res) {
+  var id = req.params.id;
+
+  knex('treino_exercicio').where({ id: id }).update(req.body)
+    .then(function(treino_exercicio) {
+      res.status(204).json(treino_exercicio);
+    });
+});
+
+app.put('/api/v1/exercicios/:id', function(req, res) {
+  knex('exercicio').where({ id: id }).update(req.body)
+    .then(function(exercicio) {
+      res.status(204).json(exercicio);
+    });
+});
+
+app.post('/api/v1/historico_objetivo', function(req, res) {
+  var historico_objetivo = {
+    id_aluno: req.body.id_aluno,
+    objetivo: req.body.objetivo,
+    data: req.body.data
+  };
+
+  knex.insert(historico_objetivo).into('historico_objetivo')
+  .then(function(historico) {
+    res.status(201).json(historico);
+  })
+  .catch(function(err) {
+    console.warn(err);
+  });
+});
+
+app.get('/api/v1/historico_objetivo/:id_aluno', function(req, res) {
+  knex('historico_objetivo').where({id_aluno: req.params.id_aluno})
+  .then(function(historico) {
+    res.json(historico);
+  })
+  .catch(function(err) {
+    console.log(err);
+  })
+});
+
+
 app.listen(port);

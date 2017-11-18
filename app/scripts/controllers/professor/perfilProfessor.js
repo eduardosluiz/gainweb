@@ -27,7 +27,24 @@ angular.module('gainApp')
     $scope.newTreinoExercicios = [];
     $scope.ver = [];
     $scope.model = {};
+    $scope.showDieta = false;
+    $scope.modeldieta = {};
 
+    $scope.editorOptions = {
+      language: 'pt-br',
+      'skin': 'moono',
+      toolbar: 'full',
+      toolbar_full: [
+      { name: 'clipboard', items : [ 'Source','Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+      { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
+      '/',
+      { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ] },
+      { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote',
+      '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock', 'Image'] },
+      '/',
+      { name: 'styles', items : [ 'Format','Font','FontSize' ] },
+      ]
+      };
 
     $scope.model.treino = {};
     $scope.model.exercicio = {};
@@ -112,6 +129,11 @@ angular.module('gainApp')
       // $scope.showMeAnexoTreinoAluno = $scope.showMeAnexoTreinoAluno;
 
     };
+
+    $scope.ShowDieta = function(){
+      $scope.showDieta = !$scope.showDieta;
+    };
+
     $scope.ShowAlunos = function(){
       $scope.showAlunos = $scope.showAlunos;
     }
@@ -196,6 +218,9 @@ angular.module('gainApp')
       });
     }
 
+
+
+
     $scope.limpar = function() {
       if (!$window.confirm('Deseja limpar?')) {
         return;
@@ -230,19 +255,48 @@ angular.module('gainApp')
       $scope.exercicios.push({});
     }
 
+    // $scope.atualizarTreino = function() {
+    //   del(treino) {
+    //     create(treino) {
+    //       criarExercicios(exercicio) {
+    //
+    //       }
+    //     }
+    //   }
+    // };
+    $scope.anexarDieta = function() {
+      profTreino.criarDietaPorProfessor($scope.dieta, $scope.model.alunoSelecionado.id, function(error, dietaAnexada){
+        if(error) return console.warn(error);
+        // var idDieta = dieta[0].id;
+
+      //   profTreino.associarDietaAoAluno(idDieta, id_aluno, function(err, res){
+      //     if(err) return console.warn(err);
+      //     console.log('Dieta associada ao aluno!');
+        $window.alert('Dieta Anexada');
+        $scope.dieta = {}
+        $scope.model.alunoSelecionado= {}
+      // });
+    });
+  }
 
 
     $scope.associarTreinoExercicio = function() {
       profTreino.criarTreino($scope.model.treino.nome, function(err, treino) {
         if(err) return console.warn(err);
+        // Cria o treino e retorna o id graças ao returning("*")
+        // o var idTreino é o retorno de sucesso da API.
         var idTreino = treino[0].id;
 
         _.each($scope.model.exercicios, function(exercicio) {
           profTreino.criarExercicio(exercicio, function(err, exercicioCriado) {
             if(err) return console.warn(err);
+            // pra cada exercicio criado ele  retorna o idExercicio graças ao returning("*")
             var idExercicio = exercicioCriado[0].id;
             console.log('Exercicio criado com sucesso', idExercicio);
 
+
+            // Dnetro desse mesmo laço... ele vincula pegando o dado do retorno da API de criação do treino e exercício comentado la em cima
+            // e pra cada exercicio que ele criar ele pega o idTreino e o idEXercicio e cria a realação no treino_exercicio...
             profTreino.associarTreinoExercicio(idTreino, idExercicio, function(err, res) {
               if(err) return console.warn(err);
               console.log('Treino associado com sucesso', res);
@@ -264,6 +318,7 @@ angular.module('gainApp')
     $scope.showMeAnexoTreinoAluno = !$scope.showMeAnexoTreinoAluno;
     $scope.formularioexercicio = !$scope.formularioexercicio;
     $scope.mostrarPlus1 = $scope.mostrarPlus1;
+    $scope.showDieta = $scope.showDieta;
 
     $scope.init();
   });

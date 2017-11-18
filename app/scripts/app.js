@@ -18,6 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'ngCkeditor',
+    'ngFacebook',
     'ngStorage'
   ])
   .config(function ($routeProvider) {
@@ -117,7 +119,27 @@ angular
   }).config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('');
   }])
+  .config( function( $facebookProvider ) {
+    $facebookProvider.setAppId('1845913872405179');
+  })
   .run(function($rootScope, $location, Authentication, $route) {
+    (function(){
+     // If we've already installed the SDK, we're done
+     if (document.getElementById('facebook-jssdk')) {return;}
+
+     // Get the first script element, which we'll use to find the parent node
+     var firstScriptElement = document.getElementsByTagName('script')[0];
+
+     // Create a new script element and set its id
+     var facebookJS = document.createElement('script');
+     facebookJS.id = 'facebook-jssdk';
+
+     // Set the new script's source to the source of the Facebook JS SDK
+     facebookJS.src = '//connect.facebook.net/en_US/all.js';
+
+     // Insert the Facebook JS SDK into the DOM
+     firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
+   }())
     $rootScope.isLoggedIn = function() {
       return Authentication.getLoggedInUser(function(data) {
         return !!data;
@@ -141,3 +163,10 @@ angular
       }
     });
 });
+
+// router.post('/upload', function(req, res){
+//   console.log(red,body);
+//   console.log(req,files);
+//   res.json({success: true});
+
+// });

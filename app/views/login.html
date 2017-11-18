@@ -9,7 +9,6 @@
 
   </div>
   </div> -->
-
         </br>
         </br>
         </br>
@@ -27,92 +26,33 @@
         </br>
 
 <div class="row">
-  <div ng-if="error" class="col-lg-12 col-xs-12 form-group">
+  <div class="col-lg-12 col-xs-12 form-group">
     <div class="alert alert-warning" role="alert">
-      <span>{{error}}</span>
+      <span>{{welcomeMsg}}</span>
     </div>
   </div>
 </div>
-
 <div class="col-xs-12 col-lg-12">
   <form name="form" ng-submit="login()" role="form">
     <div class="form-group">
       <label for="username"></label>
-      <input type="text" name="username" id="username" class="form-control" ng-model="username" placeholder="Digite aqui o seu usuário:" required/>
+      <input type="text" name="username" id="username" class="form-control" ng-model="username" placeholder="Digite aqui o seu usuário:"/>
     </div>
     <div class="form-group">
       <label for="password"></label>
-      <input type="password" name="password" id="password" class="form-control" ng-model="password" placeholder="Digite aqui a sua senha:" required />
+      <input type="password" name="password" id="password" class="form-control" ng-model="password" placeholder="Digite aqui a sua senha:" />
     </div>
+    <div class="form-group">
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <a href="#/register" class="btn btn-link">Cadastre-se</a>
+      </div>
+    </div>
+  </form>
+  <div class="form-group">
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary">Entrar</button>
-      <a href="#/register" class="btn btn-link">Cadastre-se</a>
+      <button type="submit" ng-click="loginFacebook()" class="btn btn-primary">Entrar com Facebook</button>
     </div>
-  </form>
-  <br/>
-</div>
-
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-    </br>
-    </br>
-    </br>
-  </br>
-  </br>
-  </br>
-
-
-<!-- LOGIN ANTIGO COM FACEBOOK E GOOGLE -->
-<!-- <div class="container">
-  <div class="row">
-    <h3>Acesse via: </h3>
-    <div class="row">
-      <div class="col-xs-6 col-sm-6 col-md-6">
-        <a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a>
-      </div>
-      <div class="col-xs-6 col-sm-6 col-md-6">
-        <a href="#" class="btn btn-lg btn-info btn-block">Google</a>
-      </div>
-    </div>
-    <form role="form">
-      <div class="form-group">
-        <label for="inputUsernameEmail">Email Cadastrado</label>
-        <input type="text" class="form-control" id="inputUsernameEmail">
-      </div>
-      <div class="form-group">
-        <a class="pull-right" href="#">Esqueceu sua senha?</a>
-        <label for="inputPassword">Senha</label>
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
   </div>
-  <button type="submit" class="btn btn btn-primary">
-          Acessar
-        </button>
-  <a href="#/registrando" class="btn btn-link">Cadastre-se</a>
-  </form>
-</div> -->
+</div>
+<br/>

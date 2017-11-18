@@ -59,6 +59,13 @@
       </a>
         <br>
       </div>
+      <div class="col-xs-12 col-lg-3">
+        <button ng-click="ShowDieta()" class="btn btn-primary btn-group-justified btn-lg">
+        <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span><br>
+        Nova Dieta
+      </button>
+        <br>
+      </div>
     </div>
   </div>
 </div>
@@ -359,7 +366,7 @@
             <!-- <td>{{exercicio.id}}</td> -->
             <td>{{exercicio.nome_exercicio}}</td>
             <td>{{exercicio.repeticoes}}</td>
-            <td ><img ng-if="ver[$index] == true" src={{exercicio.gif}}><button ng-click="abrirGif($index)">VER</button></td>
+            <td ><img ng-if="ver[$index] == true" ng-src={{exercicio.gif}}><button ng-click="abrirGif($index)">VER</button></td>
           </tr>
         </tbody>
       </table>
@@ -372,7 +379,6 @@
         <div class="form-group">
           <a class="btn btn-block btn-lg btn-success" ng-click="AnexoTreino()" type="button" class="btn btn-success btn-group-justified btn-lg" data-toggle="modal" data-target="#mymodal">
                           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-
                        <span class="texto_grande"></i>Anexar Treino</span></a><br>
         </div>
       </div>
@@ -405,6 +411,39 @@
                          </select>
                          </div> -->
 </div>
+
+
+<!-- inicio editar dietas -->
+
+<div ng-show="showDieta">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2 class="panel-title">Criando uma dieta:</h2>
+    </div>
+    <div class="panel-body">
+<div>
+<textarea ckeditor="editorOptions" spellcheck="true" rows="10" name="ckteste" class="form-control" ng-model="dieta.corpoDieta" required>
+
+</textarea><br>
+<div class="form-group">
+  <!-- <div ng-show="showAlunos" id="ShowAlunos" class="col-md-16"> -->
+    <label class="form-control-label">Nome da Dieta:</label>
+    <input type="text" name="nome" class="form-control" ng-model="dieta.nome_dieta" required/>
+    <label class="form-control-label">Aluno:</label>
+    <select class="form-control" ng-model="model.alunoSelecionado" ng-change="carregarTreinos()" ng-options="aluno.nome for aluno in alunos">
+                <option value="">Selecione</option><br>
+                  <br>
+                </select>
+    <div class="form-actions"><br>
+      <button type="submit" class="btn btn-primary" ng-click="anexarDieta(model.alunoSelecionado, dieta, dietaAnexada)">Anexar Dieta</button>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+
 
 <!-- FIM DIV TREINOS PRONTOS -->
 

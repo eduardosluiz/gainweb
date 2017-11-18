@@ -22,5 +22,30 @@ angular.module('gainApp')
           callback(error, null);
         });
       };
+//criação do historicoObjetivo
+      service.criaObjetivo = function(aluno, callback) {
+        var objetivo = {
+          data: new Date(),
+          objetivo: aluno.objetivo,
+          id_aluno: aluno.id
+        };
+        console.log('objetivo', objetivo)
+        $http.post(API_URL + '/historico_objetivo', objetivo)
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(err) {
+          callback(err, null);
+        });
+      };
+
+      service.buscarObjetivos = function(id_aluno, callback) {
+        $http.get(API_URL + '/historico_objetivo/' + id_aluno)
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(error) {
+          callback(error, null);
+        });
+      };
+
 
   });

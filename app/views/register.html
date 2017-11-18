@@ -8,10 +8,14 @@
     </div>
   </div>
 </div>
+
 <div class="col-lg-12">
   <form name="registro">
     <div class="form-group">
       <div class="colorfont" >
+        <div class="form-actions">
+          <button type="submit" ng-click="CadastroFacebook()" class="btn btn-primary">Registrar-se com Facebook</button>
+        </div>
       <label class="form-label-control" for="tipoCadastro">Tipo de Usuário:</label>
       <select name="tipo" ng-model="usuario.tipo" class="form-control">
         <option value="A">Aluno</option>
@@ -30,23 +34,23 @@
   </div>
     <div class="form-group">
       <!-- <label class="form-label-control">Nome Completo:</label> -->
-      <input type="text" name="nome" class="form-control" ng-model="cliente.nome" placeholder="Nome Completo:" required/>
+      <input type="text" name="nome" class="form-control" ng-model="cliente.nome" placeholder="Nome Completo:" />
     </div>
     <div class="form-group">
       <!-- <label class="form-label-control">Telefone:</label> -->
-      <input type="text" name="telefone" class="form-control" ng-model="cliente.telefone"placeholder="Telefone:" required/>
+      <input type="text" name="telefone" class="form-control" ng-model="cliente.telefone"placeholder="Telefone:" />
     </div>
     <div class="form-group">
       <!-- <label class="form-label-control">E-mail:</label> -->
-      <input type="text" name="email" class="form-control" ng-model="cliente.email" placeholder="E-mail:" required/>
+      <input type="text" name="email" class="form-control" ng-model="cliente.email" placeholder="E-mail:" />
     </div>
     <div class="form-group">
       <!-- <label class="form-label-control">Usuário:</label> -->
-      <input type="text" name="username" class="form-control" ng-model="usuario.username" placeholder="Usuário:" required/>
+      <input type="text" name="username" class="form-control" ng-model="usuario.username" placeholder="Usuário:" />
     </div>
     <div class="form-group">
       <!-- <label class="form-label-control">Senha:</label> -->
-      <input type="password" name="password" class="form-control" ng-model="usuario.password" placeholder="Senha:" required/>
+      <input type="password" name="password" class="form-control" ng-model="usuario.password" placeholder="Senha:" />
     </div>
     <!-- <div class="form-group">
       <label class="form-label-control">Anexo de Foto</label>

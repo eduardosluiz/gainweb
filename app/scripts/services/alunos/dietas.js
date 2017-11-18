@@ -19,6 +19,7 @@ angular.module('gainApp')
     };
 
     service.getDieta = function(id, callback) {
+      console.log(id);
       $http.get(API_URL + '/dietas/' + id)
       .then(function(response) {
         callback(null, response.data[0]);
@@ -48,6 +49,19 @@ angular.module('gainApp')
       });
     };
 
+    service.criarDieta = function(dieta, callback) {
+      Authentication.me(function(error, data) {
+        var userId = data[0].id
+        return console.log(dieta)
+        $http.post(API_URL + '/alunos/' + userId + '/dietas', dieta)
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(err) {
+          callback(err, null);
+        });
+      });
+    };
+
     service.deleteDieta = function(id, callback) {
       $http.delete(API_URL + '/dietas/'+ id)
       .then(function(response) {
@@ -57,5 +71,19 @@ angular.module('gainApp')
       });
     };
 
+
+    service.uploadFileToUrl = function(file) {
+      var fd = new FormData();
+      fd.append('file', file);
+      return console.log(file)
+      $http.post(API_URL + '/arquivos' , fd, {
+          transformRequest: angular.identity,
+          headers: {
+            'Content-Type': undefined
+          }
+        })
+        .success(function() {})
+        .error(function() {});
+    }
 
 });

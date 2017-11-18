@@ -21,6 +21,11 @@
         <strong>{{aluno.telefone}}</strong>
         <br>
       </div>
+      <br>
+      <button ng-click="historicoObjetivo()" type="button" class="btn btn-primary btn-group-justified btn-lg">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
+        Histórico de objetivos
+      </button>
     </div>
     <br>
     <div class="row">
@@ -61,6 +66,11 @@
       <h2 class="panel-title">Treinos</h2>
     </div>
     <div class="panel-body">
+      <!-- <input class="form-control" type="text" ng-model="model.treinoSelecionado" list="myList" ng-change="carregarExercicios()" />
+      <datalist id="myList">
+        <option ng-repeat="treino.id_treino as treino.nome_treino for treino in treinos track" value="{{treino.id}}"/>
+        <option ng-repeat="treino.id as treino.nome_treino for treino in treinos"/>
+      </datalist> -->
       <select
         class="form-control"
         ng-model="model.treinoSelecionado"
@@ -80,7 +90,7 @@
           <tr ng-repeat="exercicio in exercicios">
             <td>{{exercicio.nome_exercicio}}</td>
             <td>{{exercicio.repeticoes}}</td>
-            <td ><img ng-if="ver[$index] == true" src={{exercicio.gif}}><button ng-click="abrirGif($index)">VER</button></td>
+            <td ><img ng-if="ver[$index] == true" ng-src={{exercicio.gif}}><button ng-click="abrirGif($index)">VER</button></td>
           </tr>
         </tbody>
       </table>
@@ -121,3 +131,22 @@
     </div>
   </div>
 </div>
+<div ng-if="showHistoricoObjetivo">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2 class="panel-title">Seu Histórico de Objetivos</h2>
+    </div>
+    <table class="table table-responsive table-striped">
+      <thead>
+        <tr>
+          <th>Data:</th>
+          <th>Objetivo:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="objetivo in objetivos">
+          <td>{{objetivo.data | date:'dd/MM/yyyy'}}</td>
+          <td>{{objetivo.objetivo == 'H' ? 'Hipertrofia' : 'Perda de Peso'}}</td>
+        </tr>
+      </tbody>
+    </table>
