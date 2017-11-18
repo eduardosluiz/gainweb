@@ -19,22 +19,20 @@ angular.module('gainApp')
       var usuario = {
         username: $scope.usuario.username,
         password: $scope.usuario.password,
-        tipo: $scope.usuario.tipo
+        tipo: $scope.usuario.tipo,
+        fbid: $scope.usuario.fbid || null
       }
 
       //cadastro das informações do usuário conforme tipo
       Register.usuario(usuario, function(error, user) {
         if(error) return console.warn(error);
-        console.log(user.id);
         var cliente = {
           nome: $scope.cliente.nome,
           telefone: $scope.cliente.nome,
           email: $scope.cliente.email,
           objetivo: $scope.cliente.objetivo,
           id_usuario: user.id
-          // fbid: $scope.cliente.fbid
         };
-        console.log(cliente);
         switch ($scope.usuario.tipo) {
           case 'A':
             Register.aluno(cliente, function(error, data) {
@@ -62,12 +60,12 @@ angular.module('gainApp')
         username: $scope.usuario.username,
         password: $scope.usuario.password,
         tipo: $scope.usuario.tipo,
+        fbid: $scope.usuario.fbid || null
       }
 
       //cadastro das informações do usuário conforme tipo
       Register.usuario(usuario, function(error, user) {
         if(error) return console.warn(error);
-        console.log(user.id);
         var cliente = {
           nome: $scope.cliente.nome,
           telefone: $scope.cliente.nome,
@@ -76,7 +74,6 @@ angular.module('gainApp')
           id_usuario: user.id,
           fbid: $scope.cliente.fbid
         };
-        console.log(cliente);
         switch ($scope.usuario.tipo) {
           case 'A':
             Register.aluno(cliente, function(error, data) {
@@ -114,21 +111,9 @@ angular.module('gainApp')
       $facebook.api("/me")
       .then(function(response) {
         $scope.cliente.nome = response.name;
-        $scope.cliente.fbid = response.id;
+        $scope.usuario.fbid = response.id;
         $scope.welcomeMsg = "Welcome " + response.name;
         $scope.isLoggedIn = true;
-        Authentication.loginFacebook({id: response.id}, function(err, data) {
-          if (!err) {
-            $rootScope.$emit('carregaNav', data);
-            if(data.tipo === 'P') {
-              $location.path('/professor/perfil');
-            } else {
-              $location.path('/aluno/perfil');
-            }
-          } else {
-            $scope.welcomeMsg = 'Não registrado';
-          }
-        })
       },
       function(err) {
         $scope.welcomeMsg = "Please log in";

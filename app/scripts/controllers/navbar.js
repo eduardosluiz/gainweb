@@ -10,7 +10,17 @@ angular.module('gainApp')
       $scope.isNavCollapsed = true;
       $scope.isCollapsed = false;
       $scope.isCollapsedHorizontal = false;
+
+      $scope.logado = Authentication.isLoggedIn();
+
+
       Authentication.getLoggedInUser(function(data) {
+
+        if(!$scope.logado) {
+          Authentication.logout(function() {
+            $location.path('/login');
+          });
+        }
         $scope.user = data;
 
         //aqui eu faço uma requisição pro banco e associo o retorno dela pra um variavel no scope

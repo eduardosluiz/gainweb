@@ -137,7 +137,8 @@ app.post('/api/v1/register', function(req, res) {
 	var usuario = {
 		username: req.body.username,
 		password: req.body.password,
-		tipo: req.body.tipo
+		tipo: req.body.tipo,
+    fbid: req.body.fbid || null
 	};
 	knex.insert(usuario).into('usuarios').returning('*')
 	.then(function(usuario) {
@@ -193,9 +194,7 @@ app.post('/api/v1/alunos', function(req, res) {
     telefone: req.body.telefone,
     objetivo: req.body.objetivo,
     id_usuario: req.body.id_usuario
-    // fbid: req.body.fbid
   };
-  console.log('aluno');
   knex.insert(aluno).into('aluno').returning('*')
     .then(function(aluno) {
       res.status(201).json(aluno);

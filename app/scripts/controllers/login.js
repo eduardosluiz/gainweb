@@ -8,7 +8,7 @@
  */
 
 angular.module('gainApp')
-  .controller('LoginCtrl', function($scope, $rootScope, $location, Authentication, $window, $facebook) {
+  .controller('LoginCtrl', function($scope, $rootScope, $location, Authentication, $window, $facebook, $localStorage) {
     $scope.login = function() {
       Authentication.login($scope.username, $scope.password, function(error, data) {
           if (!error) {
