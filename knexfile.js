@@ -24,11 +24,11 @@ module.exports = {
     connection: {
       // debug: true,
       pool: {max: 1, min: 1},
-      host : '',
+      host : 'ec2-23-21-197-231.compute-1.amazonaws.com',
       port: 5432,
-      user : '',
-      database : '',
-      password : '',
+      user : 'hdqxbljmpdqtqn',
+      database : 'df63hsevpq96d0',
+      password : 'c4cd7c22b0e3c79209434eb92d6986fe65f935def50d231b45aa75240b151a36',
       ssl: true
     },
     migrations: {
