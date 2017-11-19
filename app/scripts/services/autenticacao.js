@@ -10,7 +10,7 @@
 angular.module('gainApp')
   .service('Authentication', function ($rootScope, $http, $localStorage, $facebook) {
     var service = this;
-    const API_URL = 'https://gainweb.herokuapp.com/api/v1';
+    const API_URL = 'http://localhost:4002/api/v1';
     this.login = function(usuario, password, callback) {
       $http.post(API_URL + '/autenticacao',
         [usuario, password],

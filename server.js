@@ -509,7 +509,7 @@ app.post('/api/v1/treinos/:id_treino/exercicios/:id_exercicio', function(req, re
 
   knex.insert(treino_exercicio).into('treino_exercicio').returning('*')
   .then(function(treino) {
-res.status(201).json(treino)
+    res.status(201).json(treino)
   });
 });
 
