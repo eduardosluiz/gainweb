@@ -3,7 +3,7 @@ exports.up = (knex, Promise) => {
     table.increments('id').primary();
     table.string('nome_exercicio').notNullable();
     table.integer('repeticoes').notNullable();
-
+    table.string('gif');
   });
 };
 
