@@ -10,7 +10,7 @@
 angular.module('gainApp')
   .service('Ranking', function ($http, _) {
     var service = this;
-    const API_URL = 'http://localhost:4002/api/v1';
+    const API_URL = 'https://gainweb.herokuapp.com/api/v1';
 
     this.usuario = function(usuario, callback) {
       $http.post(API_URL + '/ranking', usuario)
