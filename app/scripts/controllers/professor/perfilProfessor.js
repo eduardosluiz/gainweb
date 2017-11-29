@@ -217,7 +217,6 @@ angular.module('gainApp')
     $scope.updatePerfil = function() {
         perfilP.updatePerfil($scope.professor, function(error, professor) {
           if(error) return console.warn(error);
-          $window.alert('Perfil atualizado com sucesso');
           $scope.showMeEditarPerfil = null;
         });
       };
