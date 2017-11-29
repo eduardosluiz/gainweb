@@ -315,7 +315,8 @@ angular.module('gainApp')
             // e pra cada exercicio que ele criar ele pega o idTreino e o idEXercicio e cria a realação no treino_exercicio...
             profTreino.associarTreinoExercicio(idTreino, idExercicio, function(err, res) {
               if(err) return console.warn(err);
-              $window.alert('Treino associado com sucesso!');
+              $window.alert('Treino criado com sucesso!');
+              $scope.showMeNewTreino = null;
               console.log('Treino associado com sucesso', res);
             });
 
