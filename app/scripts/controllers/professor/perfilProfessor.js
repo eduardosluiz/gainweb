@@ -85,41 +85,45 @@ angular.module('gainApp')
 
 
     $scope.newTreino = function() {
-      if($scope.showMeEditar === true || $scope.showMeTreinoP === true || $scope.showMeEditarPerfil === true){
+      if($scope.showMeEditar === true || $scope.showMeTreinoP === true || $scope.showMeEditarPerfil === true || $scope.showDieta === true){
         $scope.showMeNewTreino = !$scope.showMeNewTreino;
         $scope.showMeEditar = false;
         $scope.showMeTreinoP = false;
         $scope.showMeEditarPerfil = false;
+        $scope.showDieta = false;
       }else{
         $scope.showMeNewTreino = !$scope.showMeNewTreino;
       }
     };
     $scope.TreinoP = function() {
-      if($scope.showMeEditar === true || $scope.showMeNewTreino === true || $scope.showMeEditarPerfil === true){
+      if($scope.showMeEditar === true || $scope.showMeNewTreino === true || $scope.showMeEditarPerfil === true || $scope.showDieta === true){
         $scope.showMeTreinoP = !$scope.showMeTreinoP;
         $scope.showMeEditar = false;
         $scope.showMeNewTreino = false;
         $scope.showMeEditarPerfil = false;
+        $scope.showDieta = false;
       }else{
       $scope.showMeTreinoP = !$scope.showMeTreinoP;
     }
     };
     $scope.Editar = function() {
-      if($scope.showMeTreinoP === true || $scope.showMeNewTreino === true || $scope.showMeEditarPerfil === true){
+      if($scope.showMeTreinoP === true || $scope.showMeNewTreino === true || $scope.showMeEditarPerfil === true || $scope.showDieta === true){
         $scope.showMeEditar = !$scope.showMeEditar;
         $scope.showMeTreinoP = false;
         $scope.showMeNewTreino = false;
         $scope.showMeEditarPerfil =false;
+        $scope.showDieta = false;
       }else{
       $scope.showMeEditar = !$scope.showMeEditar;
       }
     };
     $scope.EditarPerfil = function(){
-      if($scope.showMeTreinoP === true || $scope.showMeNewTreino === true || $scope.showMeEditar === true){
+      if($scope.showMeTreinoP === true || $scope.showMeNewTreino === true || $scope.showMeEditar === true || $scope.showDieta === true){
         $scope.showMeEditarPerfil = !$scope.showMeEditarPerfil;
         $scope.showMeTreinoP = false;
         $scope.showMeNewTreino = false;
         $scope.showMeEditar = false;
+        $scope.showDieta = false;
       }else{
       $scope.showMeEditarPerfil = !$scope.showMeEditarPerfil;
       }
@@ -131,7 +135,15 @@ angular.module('gainApp')
     };
 
     $scope.ShowDieta = function(){
+      if($scope.showMeTreinoP === true || $scope.showMeNewTreino === true || $scope.showMeEditar === true || $scope.showMeEditarPerfil === true){
+        $scope.showDieta = !$scope.showDieta;
+        $scope.showMeTreinoP = false;
+        $scope.showMeNewTreino = false;
+        $scope.showMeEditar = false;
+        $scope.showMeEditarPerfil = false;
+      }else{
       $scope.showDieta = !$scope.showDieta;
+}
     };
 
     $scope.ShowAlunos = function(){

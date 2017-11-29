@@ -60,10 +60,11 @@ angular.module('gainApp')
 
     $scope.meusTreinos = function() {
       $scope.carregarTreinos();
-      if ($scope.showMeMinhasDietas === true || $scope.showMeEditarPerfil === true) {
+      if ($scope.showMeMinhasDietas === true || $scope.showMeEditarPerfil === true || $scope.showHistoricoObjetivo === true) {
         $scope.showMeMeusTreinos = !$scope.showMeMeusTreinos;
         $scope.showMeEditarPerfil = false;
         $scope.showMeMinhasDietas = false;
+        $scope.showHistoricoObjetivo = false;
       } else {
         $scope.showMeMeusTreinos = !$scope.showMeMeusTreinos;
       }
@@ -79,10 +80,11 @@ angular.module('gainApp')
     };
 
     $scope.editarPerfil = function() {
-      if ($scope.showMeTreinoP === true || $scope.showMeNewTreino === true || $scope.showMeEditarPerfil === true) {
+      if ($scope.showMeMeusTreinos === true || $scope.showMeNewTreino === true || $scope.showHistoricoObjetivo === true) {
         $scope.showMeEditarPerfil = !$scope.showMeEditarPerfil;
         $scope.showMeMeusTreinos = false;
         $scope.showMeMinhasDietas = false;
+        $scope.showHistoricoObjetivo = false;
       } else {
         $scope.showMeEditarPerfil = !$scope.showMeEditarPerfil;
       }
@@ -100,12 +102,19 @@ angular.module('gainApp')
 // };
 
     $scope.historicoObjetivo = function() {
+      if ($scope.showMeMeusTreinos === true || $scope.showMeEditarPerfil === true || $scope.showHistoricoObjetivo === true ) {
+        $scope.showHistoricoObjetivo = !$scope.showHistoricoObjetivo;
+        $scope.showMeMeusTreinos = false;
+        $scope.showMeMinhasDietas = false;
+        $scope.showMeEditarPerfil = false;
+      } else {
       $scope.showHistoricoObjetivo = !$scope.showHistoricoObjetivo;
       perfilA.buscarObjetivos($scope.aluno.id, function(err, res) {
         if(err) return console.warn(err);
         $scope.objetivos = res;
         console.log('historico', res)
       })
+      }
     };
 
 
@@ -130,6 +139,7 @@ angular.module('gainApp')
     $scope.showMeEditarPerfil = $scope.showMeEditarPerfil;
     $scope.showMeMeusTreinos = $scope.showMeMeusTreinos;
     $scope.showMeMinhasDietas = $scope.showMeMinhasDietas;
+    $scope.showHistoricoObjetivo = $scope.showHistoricoObjetivo;
 
     $scope.init();
   });

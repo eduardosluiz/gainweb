@@ -2,8 +2,8 @@
   <div class="center">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" ng-if="logado">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        <button type="button"  class="navbar-toggle" ng-click="sair()" ng-click="isNavCollapsed = !isNavCollapsed"> Sair - {{user.username}}
+          <span class="glyphicon glyphicon-log-out"></span>
         </button>
       </div>
       <div class="navbar-collapse collapse" uib-collapse="isNavCollapsed" aria-expanded="false" aria-hidden="true" style="height: 0px;">
