@@ -101,7 +101,7 @@ angular.module('gainApp')
 
     $scope.historicoObjetivo = function() {
       $scope.showHistoricoObjetivo = !$scope.showHistoricoObjetivo;
-      perfilA.buscarObjetivos($scope.user.id, function(err, res) {
+      perfilA.buscarObjetivos($scope.aluno.id, function(err, res) {
         if(err) return console.warn(err);
         $scope.objetivos = res;
         console.log('historico', res)
