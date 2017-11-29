@@ -222,15 +222,6 @@
     <div class="panel-heading">
       <h2 class="panel-title">EDITAR TREINO:</h2>
     </div>
-    <!-- <div ng-show="showMeEditar" id="Editar" class="col-md-5">
-                  <div class="col-xs-12 col-lg-12">
-
-                    <div class="col-xs-0 col-sm-0 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
-
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h3 class="panel-title">EDITAR TREINO:</h3>
-                        </div> -->
     <div class="panel-body">
       <div class="row">
         <div class="col-md-4 col-md-offset-8">
@@ -271,8 +262,22 @@
           </tbody>
         </table>
       </div>
+
+      <br>
+      <br>
+      <form>
+        <div class="form-group" ng-repeat="exercicio in model.exercicios track by $index">
+          <label class="form-label-control">Nome: </label>
+          <input type="text" name="nome" class="form-control" ng-model="exercicio.nome_exercicio" required/>
+          <label class="form-label-control">Repetições: </label>
+          <input type="text" name="repeticoes" class="form-control" ng-model="exercicio.repeticoes" required/>
+          <label class="form-label-control">GIF do Treino: (cole aqui a URL do GIF) </label>
+          <input type="text" name="addgif" class="form-control" ng-model="exercicio.gif" />
+        </div>
+      </form>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary" ng-click="editarExercicio(exercicios)">Salvar</button> <button type="submit" class="btn btn-primary" ng-click="addRow()">Adicinhoar Exercício</button>
+        <button type="submit" class="btn btn-primary" ng-click="adicionarExercicioTreino()">Salvar</button>
+        <button type="submit" class="btn btn-primary" ng-click="addRow()">Adicinhoar Exercício</button>
       </div>
     </div>
 

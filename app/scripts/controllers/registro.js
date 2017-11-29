@@ -28,7 +28,7 @@ angular.module('gainApp')
         if(error) return console.warn(error);
         var cliente = {
           nome: $scope.cliente.nome,
-          telefone: $scope.cliente.nome,
+          telefone: $scope.cliente.telefone,
           email: $scope.cliente.email,
           objetivo: $scope.cliente.objetivo,
           id_usuario: user.id
@@ -68,7 +68,7 @@ angular.module('gainApp')
         if(error) return console.warn(error);
         var cliente = {
           nome: $scope.cliente.nome,
-          telefone: $scope.cliente.nome,
+          telefone: $scope.cliente.telefone,
           email: $scope.cliente.email,
           objetivo: $scope.cliente.objetivo,
           id_usuario: user.id,

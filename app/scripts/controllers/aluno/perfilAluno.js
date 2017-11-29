@@ -35,6 +35,7 @@ angular.module('gainApp')
     $scope.carregarTreinos = function() {
       Alunos.getTreinos($scope.user.id, function(error, treinos) {
         if (error) return console.warn(error);
+        console.log($scope.treinos)
         $scope.treinos = treinos;
       });
     };

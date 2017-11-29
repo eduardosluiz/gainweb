@@ -210,10 +210,11 @@ angular.module('gainApp')
 
 
     $scope.anexarTreino = function() {
-      // console.log(treinoSelecionado);
-      // console.log(alunoSelecionado);
+      console.log($scope.model.treinoSelecionado);
+      console.log($scope.model.alunoSelecionado);
       profTreino.anexarTreino($scope.model.treinoSelecionado.id, $scope.model.alunoSelecionado.id, function(error, treinoAnexado) {
         if(error) return console.warn(error);
+        console.log(treinoAnexado);
         $window.alert('Treino Anexado');
       });
     }
@@ -252,7 +253,9 @@ angular.module('gainApp')
     }
 
     $scope.addRow = function() {
-      $scope.exercicios.push({});
+      console.log('moidel', $scope.model)
+      console.log('exer', $scope.exercicios)
+      $scope.model.exercicios.push({});
     }
 
     // $scope.atualizarTreino = function() {
@@ -299,6 +302,7 @@ angular.module('gainApp')
             // e pra cada exercicio que ele criar ele pega o idTreino e o idEXercicio e cria a realação no treino_exercicio...
             profTreino.associarTreinoExercicio(idTreino, idExercicio, function(err, res) {
               if(err) return console.warn(err);
+              $window.alert('Treino associado com sucesso!');
               console.log('Treino associado com sucesso', res);
             });
 
@@ -306,6 +310,22 @@ angular.module('gainApp')
         });
       });
     };
+
+    $scope.adicionarExercicioTreino = function() {
+      _.each($scope.model.exercicios, function(exercicio) {
+        profTreino.criarExercicio(exercicio, function(err, exercicioCriado) {
+          if(err) return console.warn(err);
+          var idExercicio = exercicioCriado[0].id;
+          console.log('Exercicio criado com scesso', idExercicio);
+          profTreino.associarTreinoExercicio($scope.model.treinoSelecionado.id, idExercicio, function(err, res) {
+            if(err) return console.warn(err);
+            console.log('Exercício Inserido com sucesso!', res);
+            $window.alert('Exercício Inserido com sucesso!');
+          });
+
+        });
+      });
+    }
 
 
 

@@ -3,7 +3,7 @@ module.exports = {
     client: 'pg',
     debug: false,
     connection: {
-      // debug: true,
+      debug: true,
       pool: {max: 1, min: 1},
       host : 'localhost',
       port: 5432,

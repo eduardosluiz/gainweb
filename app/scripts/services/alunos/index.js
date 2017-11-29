@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('gainApp')
-  .service('Alunos', function ($http) {
+  .service('Alunos', function ($http, Authentication) {
     var service = this;
-    const API_URL = 'https://gainweb.herokuapp.com/api/v1';
+    const API_URL = 'http://localhost:4002/api/v1';
 
     service.all = function(callback) {
       $http.get(API_URL + '/alunos')
@@ -27,12 +27,15 @@ angular.module('gainApp')
         };
 
     service.getTreinos = function(id_aluno, callback) {
-      $http.get(API_URL + '/alunos/' + id_aluno + '/treinos')
-      .then(function(response) {
-        callback(null, response.data);
-      }, function(error) {
-        callback(error, null);
-      });
+      Authentication.me(function(error, data) {
+        var userId = data[0].id;
+        $http.get(API_URL + '/alunos/' + userId + '/treinos')
+        .then(function(response) {
+          callback(null, response.data);
+        }, function(error) {
+          callback(error, null);
+        });
+      })
     };
 
   });

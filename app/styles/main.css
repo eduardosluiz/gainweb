@@ -43,9 +43,16 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
+  /*text-align: center;
   font-size: 16px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;*/
+  background: url("../images/logingain.png") no-repeat center center;
+      -webkit-background-size: 100% 120%;
+      -moz-background-size: 100% 120%;
+      -o-background-size: 100% 120%;
+      background-size: 100% 120%;
+      
+
 }
 .jumbotron .btn {
   font-size: 21px;

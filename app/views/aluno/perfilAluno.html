@@ -141,12 +141,14 @@
         <tr>
           <th>Data:</th>
           <th>Objetivo:</th>
+          <!-- <th>Duração Período:</th> -->
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="objetivo in objetivos">
           <td>{{objetivo.data | date:'dd/MM/yyyy'}}</td>
           <td>{{objetivo.objetivo == 'H' ? 'Hipertrofia' : 'Perda de Peso'}}</td>
+          <!-- <td>{{objetivo.data}}</td> -->
         </tr>
       </tbody>
     </table>
