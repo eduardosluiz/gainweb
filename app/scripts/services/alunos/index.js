@@ -3,7 +3,7 @@
 angular.module('gainApp')
   .service('Alunos', function ($http, Authentication) {
     var service = this;
-    const API_URL = 'http://localhost:4002/api/v1';
+    const API_URL = 'https://gainweb.herokuapp.com/api/v1';
 
     service.all = function(callback) {
       $http.get(API_URL + '/alunos')
