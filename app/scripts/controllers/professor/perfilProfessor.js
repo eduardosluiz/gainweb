@@ -336,7 +336,7 @@ angular.module('gainApp')
             if(err) return console.warn(err);
             console.log('Exercício Inserido com sucesso!', res);
             $window.alert('Exercício Inserido com sucesso!');
-            $scope.showMeEditar = null;
+            // $scope.showMeEditar = null;
           });
 
         });
